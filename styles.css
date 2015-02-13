@@ -10,28 +10,38 @@ html, body, #map-canvas {
 	overflow: hidden;
 }
 
-.form{
+.form {
 	position: absolute;
 	top: 20%;
 	right: 10%;
 	width: 300px;
-	height: 400px;
+	height: 300px;
 	background: #fff;
 	border-radius: 5px;
 }
 
-.Home{
+.Home {
 	width: 100%;
-	height: 50%;
+	height: 45%;
+	text-align: center;
 }
 
-.Work{
+.Work {
 	width: 100%;
-	height: 50%;
+	height: 45%;
+	text-align: center;
 }
 
-.bar{
+.bar {
 	height: 20px;
 	width: 100%;
-	input: text;
+	text-align: left;
+}
+
+.button{
+	height: 10%;
+	width: 100px;
+	background: blue;
+	border-radius: 5px;
+	color: #fff;
 }
