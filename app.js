@@ -1,1 +1,1 @@
-var app = angular.module('commuteCalculator', []);
+var app = angular.module('CommuteCalculator', []);

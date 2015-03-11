@@ -1,59 +1,65 @@
 <!DOCTYPE html>
-<html ng-app="commuteCalculator">
-  <head>
+<html ng-app="CommuteCalculator">
+<head>
+	<title>Mr. Money Mustache's Commute Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body ng-controller="CommuteController">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
-    <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  <title>To-Do's</title>
-  </head>
-<<<<<<< HEAD
   
-  <body ng-controller="CommuteController">
-
-  {{car}} 
-=======
-
-  <body>
->>>>>>> 489c9521f192248586f2dd1f73f907bec3706581
 
 <div id="map-canvas"></div>
-
-<!-- <div class="form">
-
-		<div class="Home">Your Home Address
-			<div class="street bar"></input>Street:<input type="text"></div>
-			<div class="apartmentNum bar"></input>Apt/Suite#:<input type="text"></div>
-			<div class="city bar"></input>City:<input type="text"></div>
-			<div class="state bar"></input>State:<input type="text"></div>
-			<div class="zipCode bar"></input>Zip:<input type="text"></div>
-		</div>
-
-
-		<div class="Work">Your Work Address
-			<div class="street bar"></input>Street:<input type="text"></div>
-			<div class="apartmentNum bar"></input>Apt/Suite#:<input type="text"></div>
-			<div class="city bar"></input>City:<input type="text"></div>
-			<div class="state bar"></input>State:<input type="text"></div>
-			<div class="zipCode bar"></input>Zip:<input type="text"></div>
-		</div>
-<<<<<<< HEAD
+		 <div class="form">
+ 
+ 		<div class="Home">Your Home Address
+ 			<div class="street bar"></input>Street:<input type="text"></div> <!-- Why are there two input fields here?-->
+ 			<div class="apartmentNum bar"></input>Apt/Suite#:<input type="text"></div>
+ 			<div class="city bar"></input>City:<input type="text"></div>
+ 			<div class="state bar"></input>State:<input type="text"></div>
+ 			<div class="zipCode bar"></input>Zip:<input type="text"></div>
+ 		</div>
+ 
+ 		<div class="Work">Your Work Address
+ 			<div class="street bar"></input>Street:<input type="text"></div>
+ 			<div class="apartmentNum bar"></input>Apt/Suite#:<input type="text"></div>
+ 			<div class="city bar"></input>City:<input type="text"></div>
+ 			<div class="state bar"></input>State:<input type="text"></div>
+ 			<div class="zipCode bar"></input>Zip:<input type="text"></div>
+ 		</div>
 		
-		<button class="button">Submit</button> -->
-=======
-
-		<button class="button">Submit</button>
+ 		<button class="button">Submit</button>
 		<button class="button" onclick='getAddress()'>get address</button>
 		<button class="button" onclick='getDistance()'>distance</button>
->>>>>>> 489c9521f192248586f2dd1f73f907bec3706581
+
+		<form class="calcNum">
+			<input type="number" placeholder="number 1" ng-model="number1">
+			<input type="number" placeholder="number 2" ng-model="number2">
+			<button class="button" ng-click='calcNum()'>Calc Num</button> 
+			{{answer}} 
+		</form>
+
+			<input type="number" placeholder="Minutes to work..." ng-model="minutesToWork">
+			<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
+			<input type="number" placeholder="Hourly wage..." ng-model="avgHourlyWage">
+			<input type="number" placeholder="MPG of your car..." ng-model="mpgOfCar">
+			<input type="number" placeholder="Cost of new set of tires..." ng-model="costOfTires">
+			<input type="number" placeholder="Miles said tires last..." ng-model="milesTiresLast">
+			<input type="number" placeholder="Cost of oil change..." ng-model="costOfOilChange">
+			<input type="number" placeholder="Miles inbetween oil changes..." ng-model="milesOilChangeLast">
+			<input type="number" placeholder="Cost of misc maintenance..." ng-model="costOfMaintenance">
+			<input type="number" placeholder="Miles said maintenance lasts..." ng-model="milesMaintenanceLast">
+			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth">
+
 
 </div>
 
 
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
-	<script src="app.js"></script>
-	<script src="controller.js"></script>
-	<script src="service.js"></script>
-  </body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+<script src="service.js"></script>
+</body>
 </html>

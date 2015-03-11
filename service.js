@@ -1,4 +1,4 @@
-var app = angular.module('commuteCalculator');
+var app = angular.module('CommuteCalculator');
 
 app.service('commuteService', function($http){
   this.getCar = function(carmodel){
