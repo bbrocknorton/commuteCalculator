@@ -27,4 +27,84 @@ app.controller("CommuteController", function($scope) {
 		$scope.minsRound = $scope.minutesToWork * 2;
 	};
 
+	$scope.hourRound = function() {
+		$scope.hoursRound = $scope.minsRound / 60;
+	};
+
+	$scope.eightHourRounds = function() {
+
+	};
+
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+	$scope. = function() {};
+
 });
