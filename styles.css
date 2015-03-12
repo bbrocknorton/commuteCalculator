@@ -4,11 +4,11 @@ html, body, #map-canvas {
 	padding: 0;
 }
 
-#map_canvas {
+/*#map_canvas {
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
-}
+}*/
 
 .form {
 	position: absolute;
@@ -16,6 +16,16 @@ html, body, #map-canvas {
 	right: 10%;
 	width: 500px;
 	height: 400px;
+	background: #fff;
+	border-radius: 5px;
+}
+
+.form2 {
+	position: absolute;
+	top: 20%;
+	right: 30%;
+	width: 500px;
+	height: 500px;
 	background: #fff;
 	border-radius: 5px;
 }

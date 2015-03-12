@@ -12,10 +12,10 @@
   
 
 <div id="map-canvas"></div>
-		 <div class="form">
+		 <!-- <div class="form">
  
  		<div class="Home">Your Home Address
- 			<div class="street bar"></input>Street:<input type="text"></div> <!-- Why are there two input fields here?-->
+ 			<div class="street bar"></input>Street:<input type="text"></div> 
  			<div class="apartmentNum bar"></input>Apt/Suite#:<input type="text"></div>
  			<div class="city bar"></input>City:<input type="text"></div>
  			<div class="state bar"></input>State:<input type="text"></div>
@@ -33,25 +33,52 @@
  		<button class="button">Submit</button>
 		<button class="button" onclick='getAddress()'>get address</button>
 		<button class="button" onclick='getDistance()'>distance</button>
+		</div> -->
 
-		<form class="calcNum">
-			<input type="number" placeholder="number 1" ng-model="number1">
-			<input type="number" placeholder="number 2" ng-model="number2">
-			<button class="button" ng-click='calcNum()'>Calc Num</button> 
-			{{answer}} 
-		</form>
+
+		<form class="form2">
+
+			<input type="number" placeholder="Miles to work..." ng-model="milesToWork">
+			<hr>
 
 			<input type="number" placeholder="Minutes to work..." ng-model="minutesToWork">
-			<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
+			<hr>
+
 			<input type="number" placeholder="Hourly wage..." ng-model="avgHourlyWage">
+			<hr>
+
+			<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
 			<input type="number" placeholder="MPG of your car..." ng-model="mpgOfCar">
+			{{carGasAns | number : 3}}
+			<hr>
+
 			<input type="number" placeholder="Cost of new set of tires..." ng-model="costOfTires">
 			<input type="number" placeholder="Miles said tires last..." ng-model="milesTiresLast">
+			{{tire| number : 3}}
+			<hr>
+
 			<input type="number" placeholder="Cost of oil change..." ng-model="costOfOilChange">
 			<input type="number" placeholder="Miles inbetween oil changes..." ng-model="milesOilChangeLast">
+			{{oil| number : 3}}
+			<hr>
+
 			<input type="number" placeholder="Cost of misc maintenance..." ng-model="costOfMaintenance">
 			<input type="number" placeholder="Miles said maintenance lasts..." ng-model="milesMaintenanceLast">
+			{{maint| number : 3}}
+			<hr>
+
 			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth">
+			{{ins | number : 3}}
+
+			<button class="button" ng-click='carGas(); tireCalc(); oilCalc(); maintenanceCalc(); insCalc(); minRound()'>Submit For Results</button>
+			<hr>
+			
+			{{minsRound}}
+
+		</form>
+
+	
+			
 
 
 </div>
