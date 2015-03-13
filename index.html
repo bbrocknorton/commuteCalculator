@@ -49,116 +49,109 @@
 
 			<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
 			<input type="number" placeholder="MPG of your car..." ng-model="mpgOfCar">
-			{{carGasAns | number : 3}}
+			Cent/mile gas cost: {{carGasAns | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of new set of tires..." ng-model="costOfTires">
 			<input type="number" placeholder="Miles said tires last..." ng-model="milesTiresLast">
-			{{tire| number : 3}}
+			Cent/mile tire cost: {{tire | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of oil change..." ng-model="costOfOilChange">
 			<input type="number" placeholder="Miles inbetween oil changes..." ng-model="milesOilChangeLast">
-			{{oil| number : 3}}
+			Cent/mile oil change cost: {{oil | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of misc maintenance..." ng-model="costOfMaintenance">
 			<input type="number" placeholder="Miles said maintenance lasts..." ng-model="milesMaintenanceLast">
-			{{maint| number : 3}}
+			Cent/mile maintenance cost: {{maint | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth">
-			{{ins | number : 3}}
+			Cent/mile insurance cost: {{ins | number : 3}}
+			<hr>
 
-			<button class="button" ng-click='carGas(); tireCalc(); oilCalc(); maintenanceCalc(); insCalc(); minRound(); hourRound(); '>Submit For Results</button>
+			<button class="button" ng-click='carGas(); tireCalc(); oilCalc(); maintenanceCalc(); insCalc(); minRound(); hourRound(); eightHourRound(); fortyHourRound(); hourlyWageRound(); milesRound(); irsRound(); actualRound(); avgRound(); wageIrsRound(); wageActualRound(); wageAverageRound(); minsWeek(); hoursWeek(); eightHourWeek(); fortyHourWeek(); hourlyWageWeek(); milesDrivenWeek(); irsWeek(); actualWeek(); avgWeek(); wageIrsWeek(); wageActualWeek(); wageAverageWeek(); minsTen(); hoursTen(); eightHourTen(); fortyHourTen(); hourlyWageTen(); milesDrivenTen(); irsTen(); actualTen(); avgTen(); wageIrsTen(); wageActualTen(); wageAverageTen()'>Submit For Results</button>
 			<hr>
 			
-			{{minsRound}}
-			{{hoursRound}}
-			{{eightHourRound}}
-			{{fortyHourRound}}
-			{{hourlyWageRound}}
-			{{milesDrivenRound}}
-			{{irsRound}}
-			{{actualRound}}
-			{{avgRound}}
-			{{wageIrsRound}}
-			{{wageActualRound}}
-			{{wageAverageRound}}
+			Round trip time in minutes: {{minsRound | number : 0}}
+			<hr>
+			Round trip time in hours: {{hoursRound | number : 1}}
+			<hr>
+			Round trip time in 8-hour work days: {{eightHourRound | number : 2}}
+			<hr>
+			Round trip time in 40-hour work weeks: {{fortyHourRound | number : 2}}
+			<hr>
+			Your hourly wage spent commuting round trip: ${{hourlyWageRound | number : 2}}
+			<hr>
+			Miles driven round trip: {{milesDrivenRound | number : 1}}
+			<hr>
+			Round trip cost using IRS cost estimate: ${{irsRound | number : 2}}
+			<hr>
+			Round trip cost using actual cost estimate: ${{actualRound | number : 2}}
+			<hr>
+			Round trip cost using average cost estimate: ${{avgRound | number : 2}}
+			<hr>
+			Round trip cost of wages forfeited and IRS cost estimate: ${{wageIrsRound | number : 2}}
+			<hr>
+			Round trip cost of wages forfeited and actual cost estimate: ${{wageActualRound | number : 2}}
+			<hr>
+			Round trip cost of wages forfeited and average cost estimate: ${{wageAverageRound | number : 2}}
+			<hr>
 
-			{{minsWeek}}
-			{{hoursWeek}}
-			{{eightHourWeek}}
-			{{fortyHourWeek}}
-			{{hourlyWageWeek}}
-			{{milesDrivenWeek}}
-			{{irsWeek}}
-			{{actualWeek}}
-			{{avgWeek}}
-			{{wageIrsWeek}}
-			{{wageActualWeek}}
-			{{wageAverageWeek}}
+			Weekly time spent commuting in minutes: {{minsWeek | number : 0}}
+			<hr>
+			Weekly time spent commuting in hours: {{hoursWeek | number : 1}}
+			<hr>
+			Weekly time spent commuting in 8-hour work days: {{eightHourWeek | number : 2}}
+			<hr>
+			Weekly time spent commuting in 40-hour work weeks: {{fortyHourWeek | number : 2}}
+			<hr>
+			Your hourly wage spent commuting weekly: ${{hourlyWageWeek | number : 2}}
+			<hr>
+			Miles driven weekly: {{milesDrivenWeek | number : 1}}
+			<hr>
+			Weekly cost using IRS cost estimate: ${{irsWeek | number : 2}}
+			<hr>
+			Weekly cost using actual cost estimate: ${{actualWeek | number : 2}}
+			<hr>
+			Weekly cost using average cost estimate: ${{avgWeek | number : 2}}
+			<hr>
+			Weekly cost of wages forfeited and IRS cost estimate: ${{wageIrsWeek | number : 2}}
+			<hr>
+			Weekly cost of wages forfeited and actual cost estimate: ${{wageActualWeek | number : 2}}
+			<hr>
+			Weekly cost of wages forfeited and average cost estimate: ${{wageAverageWeek | number : 2}}
+			<hr>
 
-			{{minsMonth}}
-			{{hoursMonth}}
-			{{eightHourMonth}}
-			{{fortyHourMonth}}
-			{{hourlyWageMonth}}
-			{{milesDrivenMonth}}
-			{{irsMonth}}
-			{{actualMonth}}
-			{{avgMonth}}
-			{{wageIrsMonth}}
-			{{wageActualMonth}}
-			{{wageAverageMonth}}
-
-			{{minsYear}}
-			{{hoursYear}}
-			{{eightHourYear}}
-			{{fortyHourYear}}
-			{{hourlyWageYear}}
-			{{milesDrivenYear}}
-			{{irsYear}}
-			{{actualYear}}
-			{{avgYear}}
-			{{wageIrsYear}}
-			{{wageActualYear}}
-			{{wageAverageYear}}
-
-			{{minsFive}}
-			{{hoursFive}}
-			{{eightHourFive}}
-			{{fortyHourFive}}
-			{{hourlyWageFive}}
-			{{milesDrivenFive}}
-			{{irsFive}}
-			{{actualFive}}
-			{{avgFive}}
-			{{wageIrsFive}}
-			{{wageActualFive}}
-			{{wageAverageFive}}
-
-			{{minsTen}}
-			{{hoursTen}}
-			{{eightHourTen}}
-			{{fortyHourTen}}
-			{{hourlyWageTen}}
-			{{milesDrivenTen}}
-			{{irsTen}}
-			{{actualTen}}
-			{{avgTen}}
-			{{wageIrsTen}}
-			{{wageActualTen}}
-			{{wageAverageTen}}
+			Every ten years time spent commuting in minutes: {{minsTen | number : 0}}
+			<hr>
+			Every ten years time spent commuting in hours: {{hoursTen | number : 1}}
+			<hr>
+			Every ten years time spent commuting in 8-hour work days: {{eightHourTen | number : 2}}
+			<hr>
+			Every ten years time spent commuting in 40-hour work weeks: {{fortyHourTen | number : 2}}
+			<hr>
+			Your hourly wage spent commuting every ten years: ${{hourlyWageTen | number : 2}}
+			<hr>
+			Miles driven Every ten years: {{milesDrivenTen | number : 1}}
+			<hr>
+			Every ten years cost using IRS cost estimate: ${{irsTen | number : 2}}
+			<hr>
+			Every ten years cost using actual cost estimate: ${{actualTen | number : 2}}
+			<hr>
+			Every ten years cost using average cost estimate: ${{avgTen | number : 2}}
+			<hr>
+			Every ten years cost of wages forfeited and IRS cost estimate: ${{wageIrsTen | number : 2}}
+			<hr>
+			Every ten years cost of wages forfeited and actual cost estimate: ${{wageActualTen | number : 2}}
+			<hr>
+			Every ten years cost of wages forfeited and average cost estimate: ${{wageAverageTen | number : 2}}
+			<hr>
 
 		</form>
 
-	
-			
-
-
 </div>
-
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
 <script src="app.js"></script>

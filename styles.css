@@ -24,8 +24,8 @@ html, body, #map-canvas {
 	position: absolute;
 	top: 20%;
 	right: 30%;
-	width: 500px;
-	height: 500px;
+	width: 700px;
+	height: 1000px;
 	background: #fff;
 	border-radius: 5px;
 }
