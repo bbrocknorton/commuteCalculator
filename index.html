@@ -5,53 +5,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
   <script type="text/javascript" src="script.js"></script>
-  <script src="http://d3js.org/d3.vs.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body ng-controller="CommuteController">
 
+<div class="results">
+	<div class="indResults pie"></div>
+	<div class="indResults roundTripBars"></div>
+	<div class="indResults weekTripBars"></div>
+	<div class="indResults tenTripBars"></div>
+
+</div>
   
 
 <!-- <div id="map-canvas"></div> -->
 <!-- $scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins -->
-	<script>
-	var data = [9, 8, 1];
-	var r = 300;
-
-	var color = d3.scale.ordinal()
-		.range(["red", "blue", "orange"]);
-
-	var canvas = d3.select("body").append("svg")
-		.attr("width", 1500)
-		.attr("height", 1500);
-
-	var group = canvas.append("g")
-		.attr("transform", "translate(300, 300)");
-
-	var arc = d3.svg.arc()
-		.innerRadius(0 )
-		.outerRadius(r);
-
-	var pie = d3.layout.pie()
-		.value(function(d){return d;});
-
-	var arcs = group.selectAll(".arc")
-		.data(pie(data))
-		.enter()
-		.append("g")
-		.attr("class", "arc");
-
-	arcs.append("path")
-		.attr("d", arc)
-		.attr("fill", function(d){return color(d.data);});
-
-	arcs.append("text")
-		.attr("transform", function(d){return "translate(" + arc.centroid(d) + ")";})
-		.attr("text-anchor", "middle")
-		.attr("font-size", "1.5em")
-		.text(function(d){return d.data;});
-	</script>
-
 
 		 <!-- <div class="form">
  
@@ -90,29 +59,29 @@
 
 			<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
 			<input type="number" placeholder="MPG of your car..." ng-model="mpgOfCar">
-			Cent/mile gas cost: {{carGasAns | number : 3}}
+			Cent/mile gas cost: ${{carGasAns | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of new set of tires..." ng-model="costOfTires">
 			<input type="number" placeholder="Miles said tires last..." ng-model="milesTiresLast">
-			Cent/mile tire cost: {{tire | number : 3}}
+			Cent/mile tire cost: ${{tire | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of oil change..." ng-model="costOfOilChange">
 			<input type="number" placeholder="Miles inbetween oil changes..." ng-model="milesOilChangeLast">
-			Cent/mile oil change cost: {{oil | number : 3}}
+			Cent/mile oil change cost: ${{oil | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of misc maintenance..." ng-model="costOfMaintenance">
 			<input type="number" placeholder="Miles said maintenance lasts..." ng-model="milesMaintenanceLast">
-			Cent/mile maintenance cost: {{maint | number : 3}}
+			Cent/mile maintenance cost: ${{maint | number : 3}}
 			<hr>
 
 			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth">
-			Cent/mile insurance cost: {{ins | number : 3}}
+			Cent/mile insurance cost: ${{ins | number : 3}}
 			<hr>
 
-			<button class="button" ng-click='carGas(); tireCalc(); oilCalc(); maintenanceCalc(); insCalc(); minRound(); hourRound(); eightHourRound(); fortyHourRound(); hourlyWageRound(); milesRound(); irsRound(); actualRound(); avgRound(); wageIrsRound(); wageActualRound(); wageAverageRound(); minsWeek(); hoursWeek(); eightHourWeek(); fortyHourWeek(); hourlyWageWeek(); milesDrivenWeek(); irsWeek(); actualWeek(); avgWeek(); wageIrsWeek(); wageActualWeek(); wageAverageWeek(); minsTen(); hoursTen(); eightHourTen(); fortyHourTen(); hourlyWageTen(); milesDrivenTen(); irsTen(); actualTen(); avgTen(); wageIrsTen(); wageActualTen(); wageAverageTen()'>Submit For Results</button>
+			<button class="button" ng-click='submitData()'>Submit For Results</button>
 			<hr>
 			
 			Round trip time in minutes: {{minsRound | number : 0}}
@@ -191,8 +160,6 @@
 			<hr>
 
 		</form>
-
-</div>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
 <script src="app.js"></script>

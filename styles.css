@@ -1,5 +1,6 @@
 html, body, #map-canvas {
 	height: 100%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -10,7 +11,11 @@ html, body, #map-canvas {
 	overflow: hidden;
 }*/
 
-.form {
+
+
+
+
+/*.form {
 	position: absolute;
 	top: 20%;
 	right: 10%;
@@ -18,18 +23,44 @@ html, body, #map-canvas {
 	height: 400px;
 	background: #fff;
 	border-radius: 5px;
+}*/
+
+.results{
+	height: 400px;
+	width: 100%;
+	background: #FDBBDE;
+}
+
+.indResults{
+	height: 400px;
+	width: 25%;
+	float: left;
+}
+
+.pie {
+background-color: red;
+}
+
+.roundTripBars{
+	background-color: blue;
+}
+
+.weekTripBars{
+	background-color: yellow;
+}
+
+.tenTripBars{
+	background-color: pink;
 }
 
 .form2 {
-	position: absolute;
-	top: 20%;
-	right: 30%;
-	width: 700px;
-	height: 1000px;
-	background: #fff;
+	width: 100%;
+	background-color: #B6B8B7;
 	border-radius: 5px;
+	clear: left;
+	text-align: center;
 }
-
+/*
 .Home {
 	width: 100%;
 	height: 45%;
@@ -40,7 +71,7 @@ html, body, #map-canvas {
 	width: 100%;
 	height: 45%;
 	text-align: center;
-}
+}*/
 
 .bar {
 	height: 20px;

@@ -2,173 +2,419 @@ var app = angular.module("CommuteCalculator");
 
 
 app.controller("CommuteController", function($scope) {
+
+	$scope.submitData = function() {
+		carGas();
+		tireCalc();
+		oilCalc();
+		maintenanceCalc();
+		insCalc();
+		minRound();
+		hourRound();
+		eightHourRound();
+		fortyHourRound();
+		hourlyWageRound();
+		milesRound();
+		irsRound();
+		actualRound();
+		avgRound();
+		wageIrsRound();
+		wageActualRound();
+		wageAverageRound();
+		minsWeek();
+		hoursWeek();
+		eightHourWeek();
+		fortyHourWeek();
+		hourlyWageWeek();
+		milesDrivenWeek();
+		irsWeek();
+		actualWeek();
+		avgWeek();
+		wageIrsWeek();
+		wageActualWeek();
+		wageAverageWeek();
+		minsTen();
+		hoursTen();
+		eightHourTen();
+		fortyHourTen();
+		hourlyWageTen();
+		milesDrivenTen();
+		irsTen();
+		actualTen();
+		avgTen();
+		wageIrsTen();
+		wageActualTen();
+		wageAverageTen()
+		drawPieChart();
+		drawRoundTripBars();
+		drawWeekTripBars();
+		drawTenTripBars();
+	};
+
 	var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
-	$scope.carGas = function() {
+	var carGas = function() {
 		$scope.carGasAns = $scope.dollarPerGallonOfGas / $scope.mpgOfCar;
 	};
 
-	$scope.tireCalc = function() {
+	var tireCalc = function() {
 		$scope.tire = $scope.costOfTires / $scope.milesTiresLast;
 	};
 
-	$scope.oilCalc = function() {
+	var oilCalc = function() {
 		$scope.oil = $scope.costOfOilChange / $scope.milesOilChangeLast;
 	};
 
-	$scope.maintenanceCalc = function() {
+	var maintenanceCalc = function() {
 		$scope.maint = $scope.costOfMaintenance / $scope.milesMaintenanceLast;
 	};
 
-	$scope.insCalc = function() {
+	var insCalc = function() {
 		var milesMonth = $scope.milesToWork * 2 * 31;
 		$scope.ins = $scope.costOfInsuranceEachMonth / milesMonth;
 	};
 
-	$scope.minRound = function() {
+	var minRound = function() {
 		$scope.minsRound = $scope.minutesToWork * 2;
 	};
 
-	$scope.hourRound = function() {
+	var hourRound = function() {
 		$scope.hoursRound = $scope.minsRound / 60;
 	};
 
-	$scope.eightHourRound = function() {
+	var eightHourRound = function() {
 		$scope.eightHourRound = $scope.hoursRound / 8;
 	};
 
-	$scope.fortyHourRound = function() {
+	var fortyHourRound = function() {
 		$scope.fortyHourRound = $scope.eightHourRound / 40;
 	};
 
-	$scope.hourlyWageRound = function() {
+	var hourlyWageRound = function() {
 		$scope.hourlyWageRound = $scope.avgHourlyWage * $scope.hoursRound;
 	};
 
-	$scope.milesRound = function() {
+	var milesRound = function() {
 		$scope.milesDrivenRound = $scope.milesToWork * 2;
 	};
 
-	$scope.irsRound = function() {
+	var irsRound = function() {
 		$scope.irsRound = $scope.milesDrivenRound * .51;
 	};
 
-	$scope.actualRound = function() {
+	var actualRound = function() {
 		var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
 		$scope.actualRound = $scope.milesDrivenRound * actual;
 	};
 
-	$scope.avgRound = function() {
+	var avgRound = function() {
 		$scope.avgRound = ($scope.irsRound + $scope.actualRound) / 2;
 	};
 
-	$scope.wageIrsRound = function() {
+	var wageIrsRound = function() {
 		$scope.wageIrsRound = $scope.irsRound + $scope.hourlyWageRound;
 	};
 
-	$scope.wageActualRound = function() {
+	var wageActualRound = function() {
 		$scope.wageActualRound = $scope.actualRound + $scope.hourlyWageRound;
 	};
 
-	$scope.wageAverageRound = function() {
+	var wageAverageRound = function() {
 		$scope.wageAverageRound = $scope.avgRound + $scope.hourlyWageRound;
 	};
 
-	$scope.minsWeek = function() {
+	var minsWeek = function() {
 		$scope.minsWeek = $scope.minsRound * 5;
 	};
 
-	$scope.hoursWeek = function() {
+	var hoursWeek = function() {
 		$scope.hoursWeek = $scope.hoursRound * 5;
 	};
 
-	$scope.eightHourWeek = function() {
+	var eightHourWeek = function() {
 		$scope.eightHourWeek = $scope.eightHourRound * 5;
 	};
 
-	$scope.fortyHourWeek = function() {
+	var fortyHourWeek = function() {
 		$scope.fortyHourWeek = $scope.fortyHourRound * 5;
 	};
 
-	$scope.hourlyWageWeek = function() {
+	var hourlyWageWeek = function() {
 		$scope.hourlyWageWeek = $scope.hourlyWageRound * 5;
 	};
 
-	$scope.milesDrivenWeek = function() {
+	var milesDrivenWeek = function() {
 		$scope.milesDrivenWeek = $scope.milesDrivenRound * 5;
 	};
 
-	$scope.irsWeek = function() {
+	var irsWeek = function() {
 		$scope.irsWeek = $scope.milesDrivenWeek * .51;
 	};
 
-	$scope.actualWeek = function() {
+	var actualWeek = function() {
 		var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
 		$scope.actualWeek = $scope.milesDrivenWeek * actual;
 	};
 
-	$scope.avgWeek = function() {
+	var avgWeek = function() {
 		$scope.avgWeek = ($scope.irsWeek + $scope.actualWeek) / 2;
 	};
 
-	$scope.wageIrsWeek = function() {
+	var wageIrsWeek = function() {
 		$scope.wageIrsWeek = $scope.hourlyWageWeek + $scope.irsWeek;
 	};
 
-	$scope.wageActualWeek = function() {
+	var wageActualWeek = function() {
 		$scope.wageActualWeek = $scope.hourlyWageWeek + $scope.actualWeek;
 	};
 
-	$scope.wageAverageWeek = function() {
+	var wageAverageWeek = function() {
 		$scope.wageAverageWeek = $scope.hourlyWageWeek + $scope.avgWeek;
 	};
 
-	$scope.minsTen = function() {
+	var minsTen = function() {
 		$scope.minsTen = $scope.minsWeek * 520;
 	};
 
-	$scope.hoursTen = function() {
+	var hoursTen = function() {
 		$scope.hoursTen = $scope.hoursWeek * 520;
 	};
 
-	$scope.eightHourTen = function() {
+	var eightHourTen = function() {
 		$scope.eightHourTen = $scope.eightHourWeek * 520;
 	};
 
-	$scope.fortyHourTen = function() {
+	var fortyHourTen = function() {
 		$scope.fortyHourTen = $scope.fortyHourWeek * 520;
 	};
 
-	$scope.hourlyWageTen = function() {
+	var hourlyWageTen = function() {
 		$scope.hourlyWageTen = $scope.hourlyWageWeek * 520;
 	};
 
-	$scope.milesDrivenTen = function() {
+	var milesDrivenTen = function() {
 		$scope.milesDrivenTen = $scope.milesDrivenWeek * 520;
 	};
 
-	$scope.irsTen = function() {
+	var irsTen = function() {
 		$scope.irsTen = $scope.milesDrivenTen * .51;
 	};
 
-	$scope.actualTen = function() {
+	var actualTen = function() {
 		var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
 		$scope.actualTen = $scope.milesDrivenTen * actual;
 	};
 
-	$scope.avgTen = function() {
+	var avgTen = function() {
 		$scope.avgTen = ($scope.irsTen + $scope.actualTen) / 2;
 	};
 
-	$scope.wageIrsTen = function() {
+	var wageIrsTen = function() {
 		$scope.wageIrsTen = $scope.hourlyWageTen + $scope.irsTen;
 	};
 
-	$scope.wageActualTen = function() {
+	var wageActualTen = function() {
 		$scope.wageActualTen = $scope.hourlyWageTen + $scope.actualTen;
 	};
 
-	$scope.wageAverageTen = function() {
+	var wageAverageTen = function() {
 		$scope.wageAverageTen = $scope.hourlyWageTen + $scope.avgTen;
+	};
+
+	var drawRoundTripBars = function() {
+		// $scope.wageIrsRound, $scope.wageActualRound, $scope.wageAverageRound
+		var dataArray = [5, 30, 50, 60];
+
+		var width = 500;
+		var height = 500;
+
+		var widthScale = d3.scale.linear()
+			.domain([0, 60])
+			.range([0, width]);
+
+		var color = d3.scale.linear()
+			.domain([0, 60])
+			.range(["red", "pink"]);
+
+		var axis = d3.svg.axis()
+			.ticks(5)
+			.scale(widthScale);
+
+		var container = d3.select(".indResults.roundTripBars")
+		container.innerHTML = ''
+
+		var canvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = canvas.append("g")
+			.attr("transform", "translate(20, 0)")
+
+		var bars = canvas.selectAll("rect")
+			.data(dataArray)
+			.enter()
+			.append("rect")
+			.attr("width", function(d) {
+				return widthScale(d);
+			})
+			.attr("height", 50)
+			.attr("fill", function(d) {
+				return color(d);
+			})
+			.attr("y", function(d, i) {
+				return i * 100;
+			});
+
+		canvas.append("g")
+			.attr("transform", "translate(0, 400)")
+			.call(axis);
+	};
+
+	var drawWeekTripBars = function() {
+		$scope.wageIrsWeek, $scope.wageActualWeek, $scope.wageAverageWeek
+		var dataArray = [5, 30, 50, 60];
+
+		var width = 500;
+		var height = 500;
+
+		var widthScale = d3.scale.linear()
+			.domain([0, 60])
+			.range([0, width]);
+
+		var color = d3.scale.linear()
+			.domain([0, 60])
+			.range(["red", "black"]);
+
+		var axis = d3.svg.axis()
+			.ticks(5)
+			.scale(widthScale);
+
+		var container = d3.select(".indResults.weekTripBars")
+		container.innerHTML = ''
+
+		var canvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = canvas.append("g")
+			.attr("transform", "translate(20, 0)")
+
+		var bars = canvas.selectAll("rect")
+			.data(dataArray)
+			.enter()
+			.append("rect")
+			.attr("width", function(d) {
+				return widthScale(d);
+			})
+			.attr("height", 50)
+			.attr("fill", function(d) {
+				return color(d);
+			})
+			.attr("y", function(d, i) {
+				return i * 100;
+			});
+
+		canvas.append("g")
+			.attr("transform", "translate(0, 400)")
+			.call(axis);
+	};
+
+	var drawTenTripBars = function() {
+		$scope.wageIrsTen, $scope.wageActualTen, $scope.wageAverageTen
+		var dataArray = [5, 30, 50, 60];
+
+		var width = 500;
+		var height = 500;
+
+		var widthScale = d3.scale.linear()
+			.domain([0, 60])
+			.range([0, width]);
+
+		var color = d3.scale.linear()
+			.domain([0, 60])
+			.range(["red", "gray"]);
+
+		var axis = d3.svg.axis()
+			.ticks(5)
+			.scale(widthScale);
+
+		var container = d3.select(".indResults.tenTripBars")
+		container.innerHTML = ''
+
+		var canvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = canvas.append("g")
+			.attr("transform", "translate(20, 0)")
+
+		var bars = canvas.selectAll("rect")
+			.data(dataArray)
+			.enter()
+			.append("rect")
+			.attr("width", function(d) {
+				return widthScale(d);
+			})
+			.attr("height", 50)
+			.attr("fill", function(d) {
+				return color(d);
+			})
+			.attr("y", function(d, i) {
+				return i * 100;
+			});
+
+		canvas.append("g")
+			.attr("transform", "translate(0, 400)")
+			.call(axis);
+	};
+
+	var drawPieChart = function() {
+		var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
+		var r = 200;
+
+		var color = d3.scale.ordinal()
+			.range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
+
+		var container = d3.select(".indResults.pie")
+		container.innerHTML = ''
+
+		var canvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = canvas.append("g")
+			.attr("transform", "translate(200, 200)");
+
+		var arc = d3.svg.arc()
+			.innerRadius(0)
+			.outerRadius(r);
+
+		var pie = d3.layout.pie()
+			.value(function(d) {
+				return d;
+			});
+
+		var arcs = group.selectAll(".arc")
+			.data(pie(data))
+			.enter()
+			.append("g")
+			.attr("class", "arc");
+
+		arcs.append("path")
+			.attr("d", arc)
+			.attr("fill", function(d) {
+				return color(d.data);
+			});
+
+		arcs.append("text")
+			.attr("transform", function(d) {
+				return "translate(" + arc.centroid(d) + ")";
+			})
+			.attr("text-anchor", "middle")
+			.attr("font-size", "1.5em")
+			.text(function(d) {
+				return d.data;
+			});
+
 	};
 
 });
