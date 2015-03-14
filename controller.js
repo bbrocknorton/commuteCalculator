@@ -220,6 +220,55 @@ app.controller("CommuteController", function($scope) {
 		$scope.wageAverageTen = $scope.hourlyWageTen + $scope.avgTen;
 	};
 
+	var drawPieChart = function() {
+		var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
+		var r = 200;
+
+		var color = d3.scale.ordinal()
+			.range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
+
+		var container = d3.select(".indResults.pie")
+		container.innerHTML = ''
+
+		var canvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = canvas.append("g")
+			.attr("transform", "translate(200, 200)");
+
+		var arc = d3.svg.arc()
+			.innerRadius(0)
+			.outerRadius(r);
+
+		var pie = d3.layout.pie()
+			.value(function(d) {
+				return d;
+			});
+
+		var arcs = group.selectAll(".arc")
+			.data(pie(data))
+			.enter()
+			.append("g")
+			.attr("class", "arc");
+
+		arcs.append("path")
+			.attr("d", arc)
+			.attr("fill", function(d) {
+				return color(d.data);
+			});
+
+		arcs.append("text")
+			.attr("transform", function(d) {
+				return "translate(" + arc.centroid(d) + ")";
+			})
+			.attr("text-anchor", "middle")
+			.attr("font-size", "1.5em")
+			.text(function(d) {
+				return d.data;
+			});
+	};
+
 	var drawRoundTripBars = function() {
 		// $scope.wageIrsRound, $scope.wageActualRound, $scope.wageAverageRound
 		var dataArray = [5, 30, 50, 60];
@@ -233,7 +282,7 @@ app.controller("CommuteController", function($scope) {
 
 		var color = d3.scale.linear()
 			.domain([0, 60])
-			.range(["red", "pink"]);
+			.range(["yellow", "pink"]);
 
 		var axis = d3.svg.axis()
 			.ticks(5)
@@ -264,13 +313,18 @@ app.controller("CommuteController", function($scope) {
 				return i * 100;
 			});
 
+		rect.transition()
+			.duration(1500)
+			.delay(2000)
+			.attr("cx", 150);
+
 		canvas.append("g")
 			.attr("transform", "translate(0, 400)")
 			.call(axis);
 	};
 
 	var drawWeekTripBars = function() {
-		$scope.wageIrsWeek, $scope.wageActualWeek, $scope.wageAverageWeek
+		// $scope.wageIrsWeek, $scope.wageActualWeek, $scope.wageAverageWeek
 		var dataArray = [5, 30, 50, 60];
 
 		var width = 500;
@@ -319,7 +373,7 @@ app.controller("CommuteController", function($scope) {
 	};
 
 	var drawTenTripBars = function() {
-		$scope.wageIrsTen, $scope.wageActualTen, $scope.wageAverageTen
+		// $scope.wageIrsTen, $scope.wageActualTen, $scope.wageAverageTen
 		var dataArray = [5, 30, 50, 60];
 
 		var width = 500;
@@ -365,56 +419,6 @@ app.controller("CommuteController", function($scope) {
 		canvas.append("g")
 			.attr("transform", "translate(0, 400)")
 			.call(axis);
-	};
-
-	var drawPieChart = function() {
-		var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
-		var r = 200;
-
-		var color = d3.scale.ordinal()
-			.range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
-
-		var container = d3.select(".indResults.pie")
-		container.innerHTML = ''
-
-		var canvas = container.append("svg")
-			.attr("width", 400)
-			.attr("height", 400);
-
-		var group = canvas.append("g")
-			.attr("transform", "translate(200, 200)");
-
-		var arc = d3.svg.arc()
-			.innerRadius(0)
-			.outerRadius(r);
-
-		var pie = d3.layout.pie()
-			.value(function(d) {
-				return d;
-			});
-
-		var arcs = group.selectAll(".arc")
-			.data(pie(data))
-			.enter()
-			.append("g")
-			.attr("class", "arc");
-
-		arcs.append("path")
-			.attr("d", arc)
-			.attr("fill", function(d) {
-				return color(d.data);
-			});
-
-		arcs.append("text")
-			.attr("transform", function(d) {
-				return "translate(" + arc.centroid(d) + ")";
-			})
-			.attr("text-anchor", "middle")
-			.attr("font-size", "1.5em")
-			.text(function(d) {
-				return d.data;
-			});
-
 	};
 
 });
