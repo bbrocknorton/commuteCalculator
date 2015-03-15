@@ -13,13 +13,35 @@ app.controller("CommuteController", function($scope) {
 
 		var group = $scope.roundTripCanvas.append("g")
 			.attr("transform", "translate(20, 0)")
-
-
-
 	};
 
+	var initWeek = function() {
+		var container = d3.select(".indResults.weekTripBars")
+		container.innerHTML = ''
+
+		$scope.weekTripCanvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = $scope.weekTripCanvas.append("g")
+			.attr("transform", "translate(20, 0)")
+	};
+
+	var initTen = function() {
+		var container = d3.select(".indResults.tenTripBars")
+		container.innerHTML = ''
+
+		$scope.tenTripCanvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = $scope.tenTripCanvas.append("g")
+			.attr("transform", "translate(20, 0)")
+	};
 
 	init();
+	initWeek();
+	initTen();
 	$scope.submitData = function() {
 		carGas();
 		tireCalc();
@@ -62,10 +84,10 @@ app.controller("CommuteController", function($scope) {
 		wageIrsTen();
 		wageActualTen();
 		wageAverageTen()
-			// drawPieChart();
+		drawPieChart();
 		drawRoundTripBars();
-		// drawWeekTripBars();
-		// drawTenTripBars();
+		drawWeekTripBars();
+		drawTenTripBars();
 	};
 
 	var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
@@ -286,13 +308,9 @@ app.controller("CommuteController", function($scope) {
 			});
 	};
 
-
-
 	var drawRoundTripBars = function() {
 		var dataArray = [$scope.wageIrsRound, $scope.wageActualRound, $scope.wageAverageRound];
-		// var dataArray = [Math.random() * 100000, Math.random() * 100000, Math.random() * 100000];
 
-		console.log(dataArray, d3.max(dataArray));
 		var width = 500;
 		var height = 500;
 
@@ -308,19 +326,8 @@ app.controller("CommuteController", function($scope) {
 			.ticks(5)
 			.scale(widthScale);
 
-		// var container = d3.select(".indResults.roundTripBars")
-		// container.innerHTML = ''
-
-		// var canvas = container.append("svg")
-		// 	.attr("width", 400)
-		// 	.attr("height", 400);
-
-		// var group = canvas.append("g")
-		// 	.attr("transform", "translate(20, 0)")
-
 		var bars = $scope.roundTripCanvas.selectAll("rect")
 			.data(dataArray);
-
 
 		bars.exit().remove();
 
@@ -344,120 +351,106 @@ app.controller("CommuteController", function($scope) {
 				return widthScale(d);
 			});
 
-
-		// setInterval(function() {
-		// 	bars
-		// 		.transition()
-		// 		.attr("width", function(d) {
-		// 			return Math.floor(Math.random() * 100);
-		// 		});
-		// }, 5000);
-
-		// rect.transition()
-		// 	.duration(1500)
-		// 	.delay(2000)
-		// 	.attr("cx", 150);
-
 		$scope.roundTripCanvas.append("g")
 			.attr("transform", "translate(0, 370)")
 			.call(axis);
 	};
 
 	var drawWeekTripBars = function() {
-		// $scope.wageIrsWeek, $scope.wageActualWeek, $scope.wageAverageWeek
-		var dataArray = [5, 30, 50, 60];
+
+		var dataArray = [$scope.wageIrsWeek, $scope.wageActualWeek, $scope.wageAverageWeek];
 
 		var width = 500;
 		var height = 500;
 
 		var widthScale = d3.scale.linear()
-			.domain([0, 60])
+			.domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
 			.range([0, width]);
 
 		var color = d3.scale.linear()
-			.domain([0, 60])
+			.domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
 			.range(["red", "black"]);
 
 		var axis = d3.svg.axis()
 			.ticks(5)
 			.scale(widthScale);
 
-		var container = d3.select(".indResults.weekTripBars")
-		container.innerHTML = ''
+		var bars = $scope.weekTripCanvas.selectAll("rect")
+			.data(dataArray);
 
-		var canvas = container.append("svg")
-			.attr("width", 400)
-			.attr("height", 400);
+		bars.exit().remove();
 
-		var group = canvas.append("g")
-			.attr("transform", "translate(20, 0)")
-
-		var bars = canvas.selectAll("rect")
-			.data(dataArray)
-			.enter()
+		bars.enter()
 			.append("rect")
-			.attr("width", function(d) {
-				return widthScale(d);
-			})
-			.attr("height", 50)
-			.attr("fill", function(d) {
-				return color(d);
-			})
-			.attr("y", function(d, i) {
-				return i * 100;
+			.attr({
+				'width': 0,
+				'height': 50,
+				'fill': function(d) {
+					return color(d);
+				},
+				'y': function(d, i) {
+					return i * 100;
+				}
 			});
 
-		canvas.append("g")
-			.attr("transform", "translate(0, 400)")
+		bars
+			.transition()
+			.attr("width", function(d) {
+				console.log(widthScale(d), widthScale.range());
+				return widthScale(d);
+			});
+
+		$scope.weekTripCanvas.append("g")
+			.attr("transform", "translate(0, 370)")
 			.call(axis);
 	};
 
 	var drawTenTripBars = function() {
-		// $scope.wageIrsTen, $scope.wageActualTen, $scope.wageAverageTen
-		var dataArray = [5, 30, 50, 60];
+
+		var dataArray = [$scope.wageIrsTen, $scope.wageActualTen, $scope.wageAverageTen];
 
 		var width = 500;
 		var height = 500;
 
 		var widthScale = d3.scale.linear()
-			.domain([0, 60])
+			.domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
 			.range([0, width]);
 
 		var color = d3.scale.linear()
-			.domain([0, 60])
+			.domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
 			.range(["red", "gray"]);
 
 		var axis = d3.svg.axis()
 			.ticks(5)
 			.scale(widthScale);
 
-		var container = d3.select(".indResults.tenTripBars")
-		container.innerHTML = ''
+		var bars = $scope.tenTripCanvas.selectAll("rect")
+			.data(dataArray);
 
-		var canvas = container.append("svg")
-			.attr("width", 400)
-			.attr("height", 400);
+		bars.exit().remove();
 
-		var group = canvas.append("g")
-			.attr("transform", "translate(20, 0)")
-
-		var bars = canvas.selectAll("rect")
-			.data(dataArray)
-			.enter()
+		bars.enter()
 			.append("rect")
-			.attr("width", function(d) {
-				return widthScale(d);
-			})
-			.attr("height", 50)
-			.attr("fill", function(d) {
-				return color(d);
-			})
-			.attr("y", function(d, i) {
-				return i * 100;
+			.attr({
+				'width': 0,
+				'height': 50,
+				'fill': function(d) {
+					return color(d);
+				},
+				'y': function(d, i) {
+					return i * 100;
+				}
 			});
 
-		canvas.append("g")
-			.attr("transform", "translate(0, 400)")
+		bars
+			.transition()
+			.attr("width", function(d) {
+				console.log(widthScale(d), widthScale.range());
+				return widthScale(d);
+			});
+
+		$scope.tenTripCanvas.append("g")
+			.attr("transform", "translate(0, 370)")
 			.call(axis);
 	};
 
