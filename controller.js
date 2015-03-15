@@ -3,6 +3,23 @@ var app = angular.module("CommuteCalculator");
 
 app.controller("CommuteController", function($scope) {
 
+	var init = function() {
+		var container = d3.select(".indResults.roundTripBars")
+		container.innerHTML = ''
+
+		$scope.roundTripCanvas = container.append("svg")
+			.attr("width", 400)
+			.attr("height", 400);
+
+		var group = $scope.roundTripCanvas.append("g")
+			.attr("transform", "translate(20, 0)")
+
+
+
+	};
+
+
+	init();
 	$scope.submitData = function() {
 		carGas();
 		tireCalc();
@@ -45,10 +62,10 @@ app.controller("CommuteController", function($scope) {
 		wageIrsTen();
 		wageActualTen();
 		wageAverageTen()
-		drawPieChart();
+			// drawPieChart();
 		drawRoundTripBars();
-		drawWeekTripBars();
-		drawTenTripBars();
+		// drawWeekTripBars();
+		// drawTenTripBars();
 	};
 
 	var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
@@ -269,57 +286,80 @@ app.controller("CommuteController", function($scope) {
 			});
 	};
 
-	var drawRoundTripBars = function() {
-		// $scope.wageIrsRound, $scope.wageActualRound, $scope.wageAverageRound
-		var dataArray = [5, 30, 50, 60];
 
+
+	var drawRoundTripBars = function() {
+		var dataArray = [$scope.wageIrsRound, $scope.wageActualRound, $scope.wageAverageRound];
+		// var dataArray = [Math.random() * 100000, Math.random() * 100000, Math.random() * 100000];
+
+		console.log(dataArray, d3.max(dataArray));
 		var width = 500;
 		var height = 500;
 
 		var widthScale = d3.scale.linear()
-			.domain([0, 60])
+			.domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
 			.range([0, width]);
 
 		var color = d3.scale.linear()
-			.domain([0, 60])
+			.domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
 			.range(["yellow", "pink"]);
 
 		var axis = d3.svg.axis()
 			.ticks(5)
 			.scale(widthScale);
 
-		var container = d3.select(".indResults.roundTripBars")
-		container.innerHTML = ''
+		// var container = d3.select(".indResults.roundTripBars")
+		// container.innerHTML = ''
 
-		var canvas = container.append("svg")
-			.attr("width", 400)
-			.attr("height", 400);
+		// var canvas = container.append("svg")
+		// 	.attr("width", 400)
+		// 	.attr("height", 400);
 
-		var group = canvas.append("g")
-			.attr("transform", "translate(20, 0)")
+		// var group = canvas.append("g")
+		// 	.attr("transform", "translate(20, 0)")
 
-		var bars = canvas.selectAll("rect")
-			.data(dataArray)
-			.enter()
+		var bars = $scope.roundTripCanvas.selectAll("rect")
+			.data(dataArray);
+
+
+		bars.exit().remove();
+
+		bars.enter()
 			.append("rect")
-			.attr("width", function(d) {
-				return widthScale(d);
-			})
-			.attr("height", 50)
-			.attr("fill", function(d) {
-				return color(d);
-			})
-			.attr("y", function(d, i) {
-				return i * 100;
+			.attr({
+				'width': 0,
+				'height': 50,
+				'fill': function(d) {
+					return color(d);
+				},
+				'y': function(d, i) {
+					return i * 100;
+				}
 			});
 
-		rect.transition()
-			.duration(1500)
-			.delay(2000)
-			.attr("cx", 150);
+		bars
+			.transition()
+			.attr("width", function(d) {
+				console.log(widthScale(d), widthScale.range());
+				return widthScale(d);
+			});
 
-		canvas.append("g")
-			.attr("transform", "translate(0, 400)")
+
+		// setInterval(function() {
+		// 	bars
+		// 		.transition()
+		// 		.attr("width", function(d) {
+		// 			return Math.floor(Math.random() * 100);
+		// 		});
+		// }, 5000);
+
+		// rect.transition()
+		// 	.duration(1500)
+		// 	.delay(2000)
+		// 	.attr("cx", 150);
+
+		$scope.roundTripCanvas.append("g")
+			.attr("transform", "translate(0, 370)")
 			.call(axis);
 	};
 
