@@ -394,7 +394,7 @@ app.controller("CommuteController", function($scope) {
 			});
 
 		bars
-			.transition()
+			.transition(1500)
 			.attr("width", function(d) {
 				console.log(widthScale(d), widthScale.range());
 				return widthScale(d);
