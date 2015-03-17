@@ -3,16 +3,12 @@ var app = angular.module('CommuteCalculator', ['ngRoute']);
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'js/home/homeTmpl.html',
-			controller: 'homeCtrl'
+			templateUrl: 'Commute Calculator/index.html',
+			controller: 'CommuteController'
 		})
-		.when('/products/:id', {
-			templateUrl: 'js/products/productTmpl.tmpl',
-			controller: 'productsCtrl'
-		})
-		.when('/settings', {
-			templateUrl: 'js/settings/settingsTmpl.html',
-			controller: 'settingsCtrl'
+		.when('/results/:id', {
+			templateUrl: '/results/resultsTmpl.html',
+			controller: 'resultsCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
