@@ -92,9 +92,9 @@ background-color: red;
 .button{
 	height: 10%;
 	width: 100px;
-	background: blue;
+	background: white;
 	border-radius: 5px;
-	color: #fff;
+	color: blue;
 }
 
 /*html, body{
