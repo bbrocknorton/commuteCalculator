@@ -43,6 +43,7 @@ app.controller("CommuteController", function($scope) {
 	initWeek();
 	initTen();
 	$scope.submitData = function() {
+		$scope.inputData.$setSubmitted();
 		carGas();
 		tireCalc();
 		oilCalc();
@@ -89,6 +90,14 @@ app.controller("CommuteController", function($scope) {
 		drawWeekTripBars();
 		drawTenTripBars();
 	};
+
+	$scope.toggle = function() {
+		if ($scope.form) {
+			$scope.form = false;
+		} else {
+			$scope.form = true;
+		}
+	}
 
 	var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
 	var carGas = function() {
