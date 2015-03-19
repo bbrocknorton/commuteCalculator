@@ -4,7 +4,6 @@
 	<title>Mr. Money Mustache's Commute Calculator</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
-  <script type="text/javascript" src="script.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
@@ -18,6 +17,9 @@
 
 </div>
   
+  <div class="view-container">
+      <ng-view></ng-view>
+    </div>
 
 <!-- <div id="map-canvas"></div> -->
 <!-- $scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins -->
@@ -86,11 +88,10 @@
 
 			<form class="buttonForm">
 			<title>Home</title>
-			<button class="button" ng-click='submitData()'>Home</button>
+			<button class="button" ng-click='submitData()'><a href="http://www.cnn.com">Home</a></button>
 
 			<title>Click to see input totals per mile cost</title>
-			<button class="button"><a href="/results/inputs">Click to see your input totals!</a></button>
-			<a href="/results/inputs">randy baby</a>
+			<button class="button" ng-click='submitData()'><a href="#/results/inputs">Click to see your input totals!</a></button>
 
 			<title>Click to see Round Trip Results</title>
 			<button class="button" ng-click='submitData()'><a href="#/results/roundTrip">Click to see your round trip results!</a></button>
@@ -180,7 +181,7 @@
 		</form>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>
 <script src="app.js"></script>
 <script src="controller.js"></script>
 <script src="service.js"></script>
