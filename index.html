@@ -10,13 +10,18 @@
 </head>
 <body ng-controller="CommuteController">
 
-<div class="results">
+<!--<div class="results">
 	<div class="indResults pie"></div>
 	<div class="indResults roundTripBars"></div>
 	<div class="indResults weekTripBars"></div>
 	<div class="indResults tenTripBars"></div>
 
-</div>
+</div>-->
+	
+	<div class="view-container">
+      <ng-view></ng-view>
+  </div>
+	
 
 <form class="form" name="inputData" ng-hide="inputData.$submitted" novalidate>
 
@@ -56,14 +61,11 @@
 			</form>
 
 			<button class="button" ng-click="inputData.$setPristine()">Home</button>
-			<button class="button" ng-click='submitData()'>Click to see your input totals!</button>
-			<button class="button" ng-click='submitData()'>Click to see your round trip results!</button>
-			<button class="button" ng-click='submitData()'>Click to see your weekly results!</button>
-			<button class="button" ng-click='submitData()'>Click to see your ten year results!</button>
-
-			<div class="view-container">
-		    <ng-view></ng-view>
-		  </div>		
+			<button class="button" ng-click='submitData()'>Click to see your input totals!</button> //on click it will show in the view the graphical display of this data in the form of a pie chart.
+			<button class="button" ng-click='submitData()'>Click to see your round trip results!</button> //on click it will show in the view the graphical display of a bar chart
+			<button class="button" ng-click='submitData()'>Click to see your weekly results!</button> //on click it will show in the view the graphical display of a bar chart
+			<button class="button" ng-click='submitData()'>Click to see your ten year results!</button> //on click it will show in the view the graphical display of a bar chart
+		
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>
