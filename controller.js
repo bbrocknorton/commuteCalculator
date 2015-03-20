@@ -43,8 +43,6 @@ app.controller("CommuteController", function($scope) {
 	initWeek();
 	initTen();
 	$scope.submitData = function(display) {
-		console.log('hi');
-		// $scope.inputData.$setSubmitted();
 		carGas();
 		tireCalc();
 		oilCalc();
@@ -94,9 +92,7 @@ app.controller("CommuteController", function($scope) {
 	};
 
 	$scope.returnHome = function(){
-		// inputData.$setPristine();
 		$scope.resultsChart = "home";
-		console.log("pooty farty");
 	};
 
 	var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
