@@ -51,6 +51,32 @@ background-color: red;
 
 .view-container {
   text-align: center;
+	width: 100%;
+	height: 600px;
+}
+
+pieBack {
+	height: 500px;
+	width: 100%;
+	background-img: url("/images/road.jpg");
+}
+
+roundBack {
+	height: 500px;
+	width: 100%;
+	background-img: url("/images/surf.jpg");
+}
+
+weekBack {
+	height: 500px;
+	width: 100%;
+	background-img: url("/images/volcano.jpg");
+}
+
+tenBack {
+	height: 500px;
+	width: 100%;
+	background-img: url("/images/vw.jpg");
 }
 
 .view-container h1{
