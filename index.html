@@ -8,72 +8,58 @@
 	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body ng-controller="CommuteController">
 
+  <div class='periodTitle' ng-if="resultsChart === 'home'">
 
-<div class="results">
-	<div class="indResults pie" ></div>  
-	<!-- ng-show="inputType == 'inputs'" -->
-
-<!--<div class="results">
-	<div class="indResults pie"></div>
-	<div class="indResults roundTripBars"></div>
-	<div class="indResults weekTripBars"></div>
-	<div class="indResults tenTripBars"></div>
-
-</div>-->
-	
-	<div class="view-container">
-      <ng-view></ng-view>
-  </div>
-	
-
-<form class="form" name="inputData" ng-hide="inputData.$submitted" novalidate>
+  	<form class="form" name="inputData" ng-hide="inputData.$submitted" novalidate>
 
 			<input type="number" placeholder="Miles to work..." ng-model="milesToWork">
-			<hr>
-
 			<input type="number" placeholder="Minutes to work..." ng-model="minutesToWork">
-			<hr>
-
 			<input type="number" placeholder="Hourly wage..." ng-model="avgHourlyWage">
-			<hr>
-
 			<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
 			<input type="number" placeholder="MPG of your car..." ng-model="mpgOfCar">
-			<hr>
-
 			<input type="number" placeholder="Cost of new set of tires..." ng-model="costOfTires">
 			<input type="number" placeholder="Miles said tires last..." ng-model="milesTiresLast">
-			<hr>
-
 			<input type="number" placeholder="Cost of oil change..." ng-model="costOfOilChange">
 			<input type="number" placeholder="Miles inbetween oil changes..." ng-model="milesOilChangeLast">
-			<hr>
-
 			<input type="number" placeholder="Cost of misc maintenance..." ng-model="costOfMaintenance">
 			<input type="number" placeholder="Miles said maintenance lasts..." ng-model="milesMaintenanceLast">
-			<hr>
-
 			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth">			
-			<hr>
 
-			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth">
-			<hr>
+	</form>
+</div>
 
-</form>
+  <div class='periodTitle' ng-if="resultsChart === 'pie'">
+  	<div class="pieBack">
+			<div class="indResults pie"></div>
+		</div>
+	</div>
 
-			<button class="button" ng-click="inputData.$setPristine()">Home</button>
-			<button class="button" ng-click='submitData(); inputType="inputs"'>Click to see your input totals!</button>
-			<button class="button" ng-click='submitData(); '>Click to see your round trip results!</button>
-			<button class="button" ng-click='submitData(); '>Click to see your weekly results!</button>
-			<button class="button" ng-click='submitData(); '>Click to see your ten year results!</button>	
-			<button class="button" ng-click='submitData()'>Click to see your input totals!</button> //on click it will show in the view the graphical display of this data in the form of a pie chart.
-			<button class="button" ng-click='submitData()'>Click to see your round trip results!</button> //on click it will show in the view the graphical display of a bar chart
-			<button class="button" ng-click='submitData()'>Click to see your weekly results!</button> //on click it will show in the view the graphical display of a bar chart
-			<button class="button" ng-click='submitData()'>Click to see your ten year results!</button> //on click it will show in the view the graphical display of a bar chart
-		
+  <div class='periodTitle' ng-if="resultsChart === 'roundTripBars'">
+  	<div class="pieBack">
+			<div class="indResults roundTripBars"></div>
+		</div>
+  </div>
 
+  <div class='periodTitle' ng-if="resultsChart === 'weekTripBars'">
+  	<div class="pieBack">
+			<div class="indResults weekTripBars"></div>
+		</div>
+  </div>
+
+  <div class='periodTitle' ng-if="resultsChart === 'tenTripBars'">
+  	<div class="pieBack">
+			<div class="indResults tenTripBars"></div>
+		</div>
+  </div>
+
+			<button class="button" ng-click="returnHome()">Home</button>
+			<button class="button" ng-click='submitData("pie")'>See your input totals!</button> 
+			<button class="button" ng-click='submitData("roundTripBars")'>See your round trip results!</button> 
+			<button class="button" ng-click='submitData("weekTripBars")'>See your weekly results!</button> 
+			<button class="button" ng-click='submitData("tenTripBars")'>See your ten year results!</button> 
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>

@@ -2,7 +2,7 @@ var app = angular.module("CommuteCalculator");
 
 
 app.controller("CommuteController", function($scope) {
-
+	$scope.resultsChart = "home";
 	var init = function() {
 		var container = d3.select(".indResults.roundTripBars")
 		container.innerHTML = ''
@@ -42,8 +42,9 @@ app.controller("CommuteController", function($scope) {
 	init();
 	initWeek();
 	initTen();
-	$scope.submitData = function() {
-		$scope.inputData.$setSubmitted();
+	$scope.submitData = function(display) {
+		console.log('hi');
+		// $scope.inputData.$setSubmitted();
 		carGas();
 		tireCalc();
 		oilCalc();
@@ -89,15 +90,14 @@ app.controller("CommuteController", function($scope) {
 		drawRoundTripBars();
 		drawWeekTripBars();
 		drawTenTripBars();
+		$scope.resultsChart = display;
 	};
 
-	$scope.toggle = function() {
-		if ($scope.form) {
-			$scope.form = false;
-		} else {
-			$scope.form = true;
-		}
-	}
+	$scope.returnHome = function(){
+		// inputData.$setPristine();
+		$scope.resultsChart = "home";
+		console.log("pooty farty");
+	};
 
 	var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
 	var carGas = function() {
@@ -269,6 +269,7 @@ app.controller("CommuteController", function($scope) {
 	};
 
 	var drawPieChart = function() {
+		console.log('soundcloud');
 		var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
 		var r = 200;
 

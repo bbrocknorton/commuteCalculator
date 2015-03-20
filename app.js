@@ -9,22 +9,22 @@ app.config(function($routeProvider) {
 		.when('/results/', {
 			templateUrl: '/results/inputs/inputResults.html',
 			controller: 'CommuteController'
-		})
-		.when('/results/:id', {
-			templateUrl: '/results/round/roundTripResults.html',
-			controller: 'CommuteController'
-		}) //round trip route
-		.when('/results/:id', {
-			templateUrl: '/results/resultsTmpl.html',
-			controller: 'CommuteController'
-		}) //week route
-		.when('/results/:id', {
-			templateUrl: '/results/resultsTmpl.html',
-			controller: 'CommuteController'
-		}) //ten year route
-		.otherwise({
-			redirectTo: '/'
-		})
+		});
+		// .when('/results/:id', {
+		// 	templateUrl: '/results/round/roundTripResults.html',
+		// 	controller: 'CommuteController'
+		// }) //round trip route
+		// .when('/results/:id', {
+		// 	templateUrl: '/results/resultsTmpl.html',
+		// 	controller: 'CommuteController'
+		// }) //week route
+		// .when('/results/:id', {
+		// 	templateUrl: '/results/resultsTmpl.html',
+		// 	controller: 'CommuteController'
+		// }) //ten year route
+		// .otherwise({
+		// 	redirectTo: '/'
+		// })
 });
 
 // app.directive('resultsButton', function() {
