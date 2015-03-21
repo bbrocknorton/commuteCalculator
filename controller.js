@@ -288,7 +288,7 @@ app.controller("CommuteController", function($scope) {
     var color = d3.scale.ordinal()
       .range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
 
-    var container = d3.select(".indResults.pie")
+    var container = d3.select(".chartContainer")
     container.innerHTML = ''
 
     var canvas = container.append("svg")

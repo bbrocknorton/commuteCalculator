@@ -10,11 +10,9 @@
 </head>
 
 <body ng-controller="CommuteController">
+  <div class='periodTitle' > ng-if="resultsChart === 'home'<!-- " -->
 
-  <div class='periodTitle' ng-if="resultsChart === 'home'">
-
-  	<form class="form" name="inputData" ng-hide="inputData.$submitted" novalidate>
-
+<form class="form" name="inputData" ng-hide="inputData.$submitted" novalidate>
 			<input type="number" placeholder="Miles to work..." ng-model="milesToWork">
 			<input type="number" placeholder="Minutes to work..." ng-model="minutesToWork">
 			<input type="number" placeholder="Hourly wage..." ng-model="avgHourlyWage">
@@ -31,28 +29,13 @@
 	</form>
 </div>
 
-  <div class='periodTitle' ng-if="resultsChart === 'pie'">
-  	<div class="pieBack">
-			<div class="indResults pie"></div>
-		</div>
-	</div>
 
-  <div class='periodTitle' ng-if="resultsChart === 'roundTripBars'">
-  	<div class="roundBack">
-			<div class="indResults roundTripBars"></div>
-		</div>
-  </div>
-
-  <div class='periodTitle' ng-if="resultsChart === 'weekTripBars'">
-  	<div class="weekBack">
-			<div class="indResults weekTripBars"></div>
-		</div>
-  </div>
-
-  <div class='periodTitle' ng-if="resultsChart === 'tenTripBars'">
-  	<div class="tenBack">
-			<div class="indResults tenTripBars"></div>
-		</div>
+  <div>
+  	<div class="pieBack" ng-if="resultsChart === 'pie'"></div>
+  	<div class="roundBack" ng-if="resultsChart === 'roundTripBars'"></div>
+  	<div class="weekBack" ng-if="resultsChart === 'weekTripBars'"></div>
+  	<div class="tenBack" ng-if="resultsChart === 'tenTripBars'"></div>
+	<div class='chartContainer'></div>
   </div>
 
 			<button class="button" ng-click="returnHome()">Home</button>
