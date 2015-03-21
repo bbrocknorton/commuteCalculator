@@ -35,7 +35,7 @@ html, body {
 .pieBack {
 	height: 500px;
 	width: 100%;
-	background-image: url("/images/road.jpg");
+	background-image: url("./images/road.jpg");
 }
 
 .pie {
@@ -46,7 +46,7 @@ opacity: .6;
 .roundBack {
 	height: 500px;
 	width: 100%;
-	background-image: url("/images/surf.jpg");
+	background-image: url("./images/surf.jpg");
 }
 
 .roundTripBars{
@@ -57,7 +57,7 @@ opacity: .6;
 .weekBack {
 	height: 500px;
 	width: 100%;
-	background-image: url("/images/volcano.jpg");
+	background-image: url("./images/volcano.jpg");
 }
 
 .weekTripBars{
@@ -68,7 +68,7 @@ opacity: .6;
 .tenBack {
 	height: 500px;
 	width: 100%;
-	background-image: url("/images/vw.jpg");
+	background-image: url("./images/vw.jpg");
 }
 
 .tenTripBars{
