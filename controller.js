@@ -100,10 +100,20 @@ app.controller("CommuteController", function($scope) {
     wageIrsTen();
     wageActualTen();
     wageAverageTen()
-    drawPieChart();
-    drawRoundTripBars();
-    drawWeekTripBars();
-    drawTenTripBars();
+
+    d3.select(".chartContainer").remove();
+
+    if (display === 'pie') {
+      drawPieChart();
+    } else if (display === 'roundTripBars') {
+      drawRoundTripBars();
+    } else if (display === 'weekTripBars') {
+      drawWeekTripBars();
+    } else if (display === 'tenTripBars') {
+      drawTenTripBars();
+
+    }
+
     $scope.resultsChart = display;
   };
 
@@ -281,7 +291,6 @@ app.controller("CommuteController", function($scope) {
   };
 
   var drawPieChart = function() {
-    console.log('soundcloud');
     var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
     var r = 200;
 
