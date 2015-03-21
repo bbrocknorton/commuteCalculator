@@ -4,7 +4,7 @@ var app = angular.module("CommuteCalculator");
 app.controller("CommuteController", function($scope) {
 
   $scope.resultsChart = "home";
-  
+  // $('.modal').modal('toggle');
   var init = function() {
     $scope.milesToWork = 20;
     $scope.minutesToWork = 30;
@@ -19,7 +19,7 @@ app.controller("CommuteController", function($scope) {
     $scope.milesMaintenanceLast = 20000;
     $scope.costOfInsuranceEachMonth = 35;
 
-  	var container = d3.select(".chartContainer");
+    var container = d3.select(".chartContainer");
 
     $scope.chartSVG = container.append("svg")
       .attr("width", 400)
@@ -74,11 +74,11 @@ app.controller("CommuteController", function($scope) {
     wageActualTen();
     wageAverageTen()
 
-		if($scope.resultsChart !== display) {
-		    d3.select('.chartContainer g')
-		      .selectAll('*')
-		      .remove();
-		}
+    if ($scope.resultsChart !== display) {
+      d3.select('.chartContainer g')
+        .selectAll('*')
+        .remove();
+    }
 
     if (display === 'pie') {
       drawPieChart();
@@ -267,7 +267,7 @@ app.controller("CommuteController", function($scope) {
   };
 
   var drawPieChart = function() {
-    
+
     var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
     var r = 200;
 
