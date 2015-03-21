@@ -4,6 +4,7 @@ var app = angular.module("CommuteCalculator");
 app.controller("CommuteController", function($scope) {
 
   $scope.resultsChart = "home";
+  
   var init = function() {
     $scope.milesToWork = 20;
     $scope.minutesToWork = 30;
@@ -18,45 +19,18 @@ app.controller("CommuteController", function($scope) {
     $scope.milesMaintenanceLast = 20000;
     $scope.costOfInsuranceEachMonth = 35;
 
+  	var container = d3.select(".chartContainer");
 
-    var container = d3.select(".indResults.roundTripBars")
-    container.innerHTML = ''
-
-    $scope.roundTripCanvas = container.append("svg")
+    $scope.chartSVG = container.append("svg")
       .attr("width", 400)
       .attr("height", 400);
 
-    var group = $scope.roundTripCanvas.append("g")
-      .attr("transform", "translate(20, 0)")
-  };
-
-  var initWeek = function() {
-    var container = d3.select(".indResults.weekTripBars")
-    container.innerHTML = ''
-
-    $scope.weekTripCanvas = container.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
-
-    var group = $scope.weekTripCanvas.append("g")
-      .attr("transform", "translate(20, 0)")
-  };
-
-  var initTen = function() {
-    var container = d3.select(".indResults.tenTripBars")
-    container.innerHTML = ''
-
-    $scope.tenTripCanvas = container.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
-
-    var group = $scope.tenTripCanvas.append("g")
+    $scope.chartSVGGroup = $scope.chartSVG.append("g")
       .attr("transform", "translate(20, 0)")
   };
 
   init();
-  initWeek();
-  initTen();
+
   $scope.submitData = function(display) {
     carGas();
     tireCalc();
@@ -100,9 +74,11 @@ app.controller("CommuteController", function($scope) {
     wageActualTen();
     wageAverageTen()
 
-    d3.select('.chartContainer')
-      .selectAll('*')
-      .remove();
+		if($scope.resultsChart !== display) {
+		    d3.select('.chartContainer g')
+		      .selectAll('*')
+		      .remove();
+		}
 
     if (display === 'pie') {
       drawPieChart();
@@ -110,14 +86,10 @@ app.controller("CommuteController", function($scope) {
       drawRoundTripBars();
     } else if (display === 'weekTripBars') {
       drawRoundTripBars();
-    } else {
+    } else if (display === 'tenTripBars') {
       drawTenTripBars();
     };
 
-    // drawPieChart();
-    // drawRoundTripBars();
-    // drawWeekTripBars();
-    // drawTenTripBars();
     $scope.resultsChart = display;
   };
 
@@ -295,22 +267,22 @@ app.controller("CommuteController", function($scope) {
   };
 
   var drawPieChart = function() {
-    // console.log('soundcloud');
+    
     var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
     var r = 200;
 
     var color = d3.scale.ordinal()
       .range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
 
-    var container = d3.select(".chartContainer")
-    container.innerHTML = ''
+    // var container = d3.select(".chartContainer")
+    // container.innerHTML = ''
 
-    var canvas = container.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
+    // var canvas = container.append("svg")
+    //   .attr("width", 400)
+    //   .attr("height", 400);
 
-    var group = canvas.append("g")
-      .attr("transform", "translate(200, 200)");
+    // var group = canvas.append("g")
+    //   .attr("transform", "translate(200, 200)");
 
     var arc = d3.svg.arc()
       .innerRadius(0)
@@ -321,7 +293,10 @@ app.controller("CommuteController", function($scope) {
         return d;
       });
 
-    var arcs = group.selectAll(".arc")
+
+
+
+    var arcs = $scope.chartSVGGroup.selectAll(".arc")
       .data(pie(data))
       .enter()
       .append("g")
@@ -362,7 +337,7 @@ app.controller("CommuteController", function($scope) {
       .ticks(5)
       .scale(widthScale);
 
-    var bars = $scope.roundTripCanvas.selectAll("rect")
+    var bars = $scope.chartSVGGroup.selectAll("rect")
       .data(dataArray);
 
     bars.exit().remove();
@@ -387,7 +362,7 @@ app.controller("CommuteController", function($scope) {
         return widthScale(d);
       });
 
-    $scope.roundTripCanvas.append("g")
+    $scope.chartSVGGroup.append("g")
       .attr("transform", "translate(0, 370)")
       .call(axis);
   };
@@ -411,7 +386,7 @@ app.controller("CommuteController", function($scope) {
       .ticks(5)
       .scale(widthScale);
 
-    var bars = $scope.weekTripCanvas.selectAll("rect")
+    var bars = $scope.chartSVGGroup.selectAll("rect")
       .data(dataArray);
 
     bars.exit().remove();
@@ -436,7 +411,7 @@ app.controller("CommuteController", function($scope) {
         return widthScale(d);
       });
 
-    $scope.weekTripCanvas.append("g")
+    $scope.chartSVGGroup.append("g")
       .attr("transform", "translate(0, 370)")
       .call(axis);
   };
@@ -460,7 +435,7 @@ app.controller("CommuteController", function($scope) {
       .ticks(5)
       .scale(widthScale);
 
-    var bars = $scope.tenTripCanvas.selectAll("rect")
+    var bars = $scope.chartSVGGroup.selectAll("rect")
       .data(dataArray);
 
     bars.exit().remove();
@@ -485,7 +460,7 @@ app.controller("CommuteController", function($scope) {
         return widthScale(d);
       });
 
-    $scope.tenTripCanvas.append("g")
+    $scope.chartSVGGroup.append("g")
       .attr("transform", "translate(0, 370)")
       .call(axis);
   };
