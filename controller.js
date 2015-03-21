@@ -2,13 +2,8 @@ var app = angular.module("CommuteCalculator");
 
 
 app.controller("CommuteController", function($scope) {
-
-
-
   (function() {
-
     'use strict';
-
     // http://stackoverflow.com/a/11381730/989439
     function mobilecheck() {
       var check = false;
@@ -17,7 +12,6 @@ app.controller("CommuteController", function($scope) {
       })(navigator.userAgent || navigator.vendor || window.opera);
       return check;
     }
-
     var splitlayout = document.getElementById('splitlayout'),
       leftSide = splitlayout.querySelector('div.intro > div.side-left'),
       rightSide = splitlayout.querySelector('div.intro > div.side-right'),
@@ -75,51 +69,42 @@ app.controller("CommuteController", function($scope) {
       classie.remove(splitlayout, 'close-left');
       classie.remove(splitlayout, 'reset-layout');
     }
-
     initLayout();
-
   })();
 
-
-
-
-
-
-
-
-
-  $scope.resultsChart = "home";
-
-  
-
   var init = function() {
-    $scope.milesToWork = 20;
-    $scope.minutesToWork = 30;
-    $scope.avgHourlyWage = 12;
-    $scope.dollarPerGallonOfGas = 2;
-    $scope.mpgOfCar = 20;
-    $scope.costOfTires = 400;
-    $scope.milesTiresLast = 50000;
-    $scope.costOfOilChange = 32;
-    $scope.milesOilChangeLast = 5000;
-    $scope.costOfMaintenance = 200;
-    $scope.milesMaintenanceLast = 20000;
-    $scope.costOfInsuranceEachMonth = 35;
+    $scope.milesToWorkDetailed = 20;
+    $scope.minutesToWorkDetailed = 30;
+    $scope.avgHourlyWageDetailed = 12;
+    $scope.dollarPerGallonOfGasDetailed = 2;
+    $scope.mpgOfCarDetailed = 20;
+    $scope.costOfTiresDetailed = 400;
+    $scope.milesTiresLastDetailed = 50000;
+    $scope.costOfOilChangeDetailed = 32;
+    $scope.milesOilChangeLastDetailed = 5000;
+    $scope.costOfMaintenanceDetailed = 200;
+    $scope.milesMaintenanceLastDetailed = 20000;
+    $scope.costOfInsuranceEachMonthDetailed = 35;
 
-    var container = d3.select(".chartContainer");
-
-    $scope.chartSVG = container.append("svg")
+    var containerDetailed = d3.select(".chartContainerDetailed");
+    $scope.chartSVGDetailed = containerDetailed.append("svg")
       .attr("width", 400)
       .attr("height", 400);
+    $scope.chartSVGGroupDetailed = $scope.chartSVGDetailed.append("g")
+      .attr("transform", "translate(20, 0)");
 
-    $scope.chartSVGGroup = $scope.chartSVG.append("g")
-      .attr("transform", "translate(20, 0)")
+    var containerSimple = d3.select(".chartContainerSimple");
+    $scope.chartSVGSimple = containerSimple.append("svg")
+      .attr("width", 400)
+      .attr("height", 400);
+    $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
+      .attr("transform", "translate(20, 0)");
   };
 
   init();
 
   // $scope.submitData = function(display) {
-    
+
   //   minRound();
   //   hourRound();
   //   eightHourRound();
@@ -167,7 +152,7 @@ app.controller("CommuteController", function($scope) {
   // };
 
   $scope.submitData = function(display) {
-    
+
     // carGas();
     // tireCalc();
     // oilCalc();
@@ -238,7 +223,7 @@ app.controller("CommuteController", function($scope) {
   };
 
   var actual = $scope.carGasAns + $scope.tire + $scope.oil + $scope.maint + $scope.ins;
-  
+
 
   var carGas = function() {
     $scope.carGasAns = $scope.dollarPerGallonOfGas / $scope.mpgOfCar;
@@ -401,23 +386,23 @@ app.controller("CommuteController", function($scope) {
 
   var wageIrsTen = function() {
     $scope.wageIrsTen = $scope.hourlyWageTen + $scope.irsTen;
-    	if ($scope.wageIrsTen > 50000){
-    		$('.modal').modal('toggle');
-  		}
+    if ($scope.wageIrsTen > 50000) {
+      $('.modal').modal('toggle');
+    }
   };
 
   var wageActualTen = function() {
     $scope.wageActualTen = $scope.hourlyWageTen + $scope.actualTen;
     // if ($scope.wageIrsTen > 50000){
     // 		$('.modal').modal('toggle');
-  		// }
+    // }
   };
 
   var wageAverageTen = function() {
     $scope.wageAverageTen = $scope.hourlyWageTen + $scope.avgTen;
     // if ($scope.wageIrsTen > 50000){
     // 		$('.modal').modal('toggle');
-  		// }
+    // }
   };
 
   var drawPieChart = function() {
@@ -519,8 +504,8 @@ app.controller("CommuteController", function($scope) {
   };
 
   var drawWeekTripBars = function() {
-  	debugger
-  	console.log("pooty farty");
+    debugger
+    console.log("pooty farty");
 
     var dataArray = [$scope.wageIrsWeek, $scope.wageAverageWeek, $scope.wageActualWeek];
 
