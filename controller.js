@@ -118,7 +118,7 @@ app.controller("CommuteController", function($scope) {
 
   init();
 
-  // $scope.submitData = function(display) {
+  // $scope.submitSimpleData = function(display) {
     
   //   minRound();
   //   hourRound();
@@ -168,11 +168,11 @@ app.controller("CommuteController", function($scope) {
 
   $scope.submitData = function(display) {
     
-    // carGas();
-    // tireCalc();
-    // oilCalc();
-    // maintenanceCalc();
-    // insCalc();
+    carGas();
+    tireCalc();
+    oilCalc();
+    maintenanceCalc();
+    insCalc();
 
     minRound();
     hourRound();
@@ -421,7 +421,8 @@ app.controller("CommuteController", function($scope) {
   };
 
   var drawPieChart = function() {
-
+debugger
+console.log("pooty");
     var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
     var r = 200;
 
@@ -519,8 +520,6 @@ app.controller("CommuteController", function($scope) {
   };
 
   var drawWeekTripBars = function() {
-  	debugger
-  	console.log("pooty farty");
 
     var dataArray = [$scope.wageIrsWeek, $scope.wageAverageWeek, $scope.wageActualWeek];
 
