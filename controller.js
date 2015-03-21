@@ -265,7 +265,7 @@ app.controller("CommuteController", function($scope) {
 	};
 
 	var drawPieChart = function() {
-		console.log('soundcloud');
+		// console.log('soundcloud');
 		var data = [$scope.carGasAns, $scope.tire, $scope.oil, $scope.maint, $scope.ins];
 		var r = 200;
 
