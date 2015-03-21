@@ -9,15 +9,15 @@ app.controller("CommuteController", function($scope) {
     $scope.milesToWork = 20;
     $scope.minutesToWork = 30;
     $scope.avgHourlyWage = 12;
-    $scope.dollarPerGallonOfGas = 2;
-    $scope.mpgOfCar = 20;
-    $scope.costOfTires = 400;
-    $scope.milesTiresLast = 50000;
-    $scope.costOfOilChange = 32;
-    $scope.milesOilChangeLast = 5000;
-    $scope.costOfMaintenance = 200;
-    $scope.milesMaintenanceLast = 20000;
-    $scope.costOfInsuranceEachMonth = 35;
+    // $scope.dollarPerGallonOfGas = 2;
+    // $scope.mpgOfCar = 20;
+    // $scope.costOfTires = 400;
+    // $scope.milesTiresLast = 50000;
+    // $scope.costOfOilChange = 32;
+    // $scope.milesOilChangeLast = 5000;
+    // $scope.costOfMaintenance = 200;
+    // $scope.milesMaintenanceLast = 20000;
+    // $scope.costOfInsuranceEachMonth = 35;
 
   	var container = d3.select(".chartContainer");
 
@@ -43,7 +43,9 @@ app.controller("CommuteController", function($scope) {
     fortyHourRound();
     hourlyWageRound();
     milesRound();
+
     irsRound();
+
     actualRound();
     avgRound();
     wageIrsRound();
@@ -72,7 +74,7 @@ app.controller("CommuteController", function($scope) {
     avgTen();
     wageIrsTen();
     wageActualTen();
-    wageAverageTen()
+    wageAverageTen();
 
 		if($scope.resultsChart !== display) {
 		    d3.select('.chartContainer g')
@@ -256,14 +258,29 @@ app.controller("CommuteController", function($scope) {
 
   var wageIrsTen = function() {
     $scope.wageIrsTen = $scope.hourlyWageTen + $scope.irsTen;
+    // if ($scope.wageIrsTen > 50000){
+    // 	alert("YOU HAVE A COMMUTE EMERGENCY!!");
+    // } else ($scope.wageIrsTen < 50000) {
+    // 	alert("You're lucky cause Mr. Money Mustache won't punch you in the face because of your commute.");
+    // }
   };
 
   var wageActualTen = function() {
     $scope.wageActualTen = $scope.hourlyWageTen + $scope.actualTen;
+    //  if ($scope.wageActualTen > 50000){
+    // 	alert("YOU HAVE A COMMUTE EMERGENCY!!");
+    // } else ($scope.wageActualTen < 50000) {
+    // 	alert("You're lucky cause Mr. Money Mustache won't punch you in the face because of your commute.");
+    // }
   };
 
   var wageAverageTen = function() {
     $scope.wageAverageTen = $scope.hourlyWageTen + $scope.avgTen;
+    //  if ($scope.wageAverageTen > 50000){
+    // 	alert("YOU HAVE A COMMUTE EMERGENCY!!");
+    // } else ($scope.wageAverageTen < 50000) {
+    // 	alert("You're lucky cause Mr. Money Mustache won't punch you in the face because of your commute.");
+    // }
   };
 
   var drawPieChart = function() {
@@ -292,9 +309,6 @@ app.controller("CommuteController", function($scope) {
       .value(function(d) {
         return d;
       });
-
-
-
 
     var arcs = $scope.chartSVGGroup.selectAll(".arc")
       .data(pie(data))

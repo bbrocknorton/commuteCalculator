@@ -15,7 +15,8 @@
 			<input type="number" placeholder="Miles to work..." ng-model="milesToWork">
 			<input type="number" placeholder="Minutes to work..." ng-model="minutesToWork">
 			<input type="number" placeholder="Hourly wage..." ng-model="avgHourlyWage">
-			<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
+
+	<!-- 		<input type="number" placeholder="$/gallon of gas..." ng-model="dollarPerGallonOfGas">
 			<input type="number" placeholder="MPG of your car..." ng-model="mpgOfCar">
 			<input type="number" placeholder="Cost of new set of tires..." ng-model="costOfTires">
 			<input type="number" placeholder="Miles said tires last..." ng-model="milesTiresLast">
@@ -23,10 +24,15 @@
 			<input type="number" placeholder="Miles inbetween oil changes..." ng-model="milesOilChangeLast">
 			<input type="number" placeholder="Cost of misc maintenance..." ng-model="costOfMaintenance">
 			<input type="number" placeholder="Miles said maintenance lasts..." ng-model="milesMaintenanceLast">
-			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth">
+			<input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth"> -->
 
 	</form>
-</div>
+
+	<button class="button" ng-click="returnHome()">Home</button>
+			<button class="button" ng-click='submitData("pie")'>See your input totals!</button>
+			<button class="button" ng-click='submitData("roundTripBars")'>See your round trip results!</button>
+			<button class="button" ng-click='submitData("weekTripBars")'>See your weekly results!</button>
+			<button class="button" ng-click='submitData("tenTripBars")'>See your ten year results!</button>
 
 
   <div>
@@ -37,11 +43,18 @@
 	<div class='chartContainer'></div>
   </div>
 
-			<button class="button" ng-click="returnHome()">Home</button>
-			<button class="button" ng-click='submitData("pie")'>See your input totals!</button>
-			<button class="button" ng-click='submitData("roundTripBars")'>See your round trip results!</button>
-			<button class="button" ng-click='submitData("weekTripBars")'>See your weekly results!</button>
-			<button class="button" ng-click='submitData("tenTripBars")'>See your ten year results!</button>
+  <div class="counter">
+  <!-- hitwebcounter Code START -->
+  	<a href="http://www.hitwebcounter.com" target="_blank">
+<img src="http://hitwebcounter.com/counter/counter.php?page=6019845&style=0005&nbdigits=9&type=ip&initCount=0" title="hitweb counter code" Alt="hitweb counter code"   border="0" >
+</a><br/>
+<!-- hitwebcounter.com --><a href="http://www.hitwebcounter.com/how-to/how-to-what-is-free-blog-counter.php" title="site meter traffic" 
+target="_blank" style="font-family: Geneva, Arial, Helvetica; 
+font-size: 11px; color: #85948C; text-decoration: underline ;"><em>site meter traffic</em>
+</a>   
+  </div>
+
+		
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>
