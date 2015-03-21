@@ -107,7 +107,17 @@
 				<!-- <input type="number" placeholder="Miles said maintenance lasts..." ng-model="milesMaintenanceLast"> -->
 				<!-- <input type="number" placeholder="Cost of insurance each month..." ng-model="costOfInsuranceEachMonth"> -->
 
+
+
 	</form>
+
+	<div class='buttonContainer'>
+		<button class="btn btn-default" ng-click="returnHome()">Home</button>
+		<button class="btn btn-default" ng-click='submitData("pie")'>See your input totals!</button>
+		<button class="btn btn-default" ng-click='submitData("roundTripBars")'>See your round trip results!</button>
+		<button class="btn btn-default" ng-click='submitData("weekTripBars")'>See your weekly results!</button>
+		<button class="btn btn-default" ng-click='submitData("tenTripBars")'>See your ten year results!</button>
+	</div>
 
 	<div>
 		<div class="pieBack" ng-if="resultsChart === 'pie'"></div>
@@ -117,13 +127,7 @@
 		<div class='chartContainer'></div>
 	</div>
 
-	<div class='buttonContainer'>
-		<button class="btn btn-default" ng-click="returnHome()">Home</button>
-		<button class="btn btn-default" ng-click='submitData("pie")'>See your input totals!</button>
-		<button class="btn btn-default" ng-click='submitData("roundTripBars")'>See your round trip results!</button>
-		<button class="btn btn-default" ng-click='submitData("weekTripBars")'>See your weekly results!</button>
-		<button class="btn btn-default" ng-click='submitData("tenTripBars")'>See your ten year results!</button>
-	</div>
+
 
 	<div class="counter">
 		<!-- hitwebcounter Code START -->
@@ -142,10 +146,10 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Modal title</h4>
+					<h4 class="modal-title">Today is not your lucky day...</h4>
 				</div>
 				<div class="modal-body">
-					<p>One fine body&hellip;</p>
+					<p>Mr. Money Mustache will be punching you in the face due to the amount of commuting you're doing!&hellip;</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
