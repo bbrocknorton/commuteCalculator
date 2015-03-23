@@ -80,74 +80,74 @@ app.controller("CommuteController", function($scope) {
 //////////////////////////////////////////
 //////////////////////////////////////////
 
-  var initSimple = function() {
-    $scope.milesToWorkSimple = 20;
-    $scope.minutesToWorkSimple = 30;
-    $scope.avgHourlyWageSimple = 12;
+  // var initSimple = function() {
+  //   $scope.milesToWorkSimple = 20;
+  //   $scope.minutesToWorkSimple = 30;
+  //   $scope.avgHourlyWageSimple = 12;
 
-    var containerSimple = d3.select(".chartContainerSimple");
-    $scope.chartSVGSimple = containerSimple.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
-    $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
-      .attr("transform", "translate(20, 0)");
+  //   var containerSimple = d3.select(".chartContainerSimple");
+  //   $scope.chartSVGSimple = containerSimple.append("svg")
+  //     .attr("width", 400)
+  //     .attr("height", 400);
+  //   $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
+  //     .attr("transform", "translate(20, 0)");
 
-    var containerSimple = d3.select(".chartContainerSimple");
-    $scope.chartSVGSimple = containerSimple.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
-    $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
-      .attr("transform", "translate(20, 0)");
-  };
+  //   var containerSimple = d3.select(".chartContainerSimple");
+  //   $scope.chartSVGSimple = containerSimple.append("svg")
+  //     .attr("width", 400)
+  //     .attr("height", 400);
+  //   $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
+  //     .attr("transform", "translate(20, 0)");
+  // };
 
-  initSimple();
+  // initSimple();
 
 
-  $scope.submitSimpleData = function(display) {
+  // $scope.submitSimpleData = function(display) {
 
-    minRoundSimple();
-    hourRoundSimple();
-    eightHourRoundSimple();
-    fortyHourRoundSimple();
-    hourlyWageRoundSimple();
-    milesRoundSimple();
-    irsRoundSimple();
-    wageIrsRoundSimple();
+  //   minRoundSimple();
+  //   hourRoundSimple();
+  //   eightHourRoundSimple();
+  //   fortyHourRoundSimple();
+  //   hourlyWageRoundSimple();
+  //   milesRoundSimple();
+  //   irsRoundSimple();
+  //   wageIrsRoundSimple();
 
-    minsWeekSimple();
-    hoursWeekSimple();
-    eightHourWeekSimple();
-    fortyHourWeekSimple();
-    hourlyWageWeekSimple();
-    milesDrivenWeekSimple();
-    irsWeekSimple();
-    wageIrsWeekSimple();
+  //   minsWeekSimple();
+  //   hoursWeekSimple();
+  //   eightHourWeekSimple();
+  //   fortyHourWeekSimple();
+  //   hourlyWageWeekSimple();
+  //   milesDrivenWeekSimple();
+  //   irsWeekSimple();
+  //   wageIrsWeekSimple();
 
-    minsTenSimple();
-    hoursTenSimple();
-    eightHourTenSimple();
-    fortyHourTenSimple();
-    hourlyWageTenSimple();
-    milesDrivenTenSimple();
-    irsTenSimple();
-    wageIrsTenSimple();
+  //   minsTenSimple();
+  //   hoursTenSimple();
+  //   eightHourTenSimple();
+  //   fortyHourTenSimple();
+  //   hourlyWageTenSimple();
+  //   milesDrivenTenSimple();
+  //   irsTenSimple();
+  //   wageIrsTenSimple();
 
-    if ($scope.resultsChart !== display) {
-      d3.select('.chartContainer g')
-        .selectAll('*')
-        .remove();
-    }
+  //   if ($scope.resultsChart !== display) {
+  //     d3.select('.chartContainer g')
+  //       .selectAll('*')
+  //       .remove();
+  //   }
 
-    if (display === 'roundTripBarsSimple') {
-      drawRoundTripBarsSimple();
-    } else if (display === 'weekTripBarsSimple') {
-      drawRoundTripBarsSimple();
-    } else if (display === 'tenTripBarsSimple') {
-      drawTenTripBarsSimple();
-    };
+  //   if (display === 'roundTripBarsSimple') {
+  //     drawRoundTripBarsSimple();
+  //   } else if (display === 'weekTripBarsSimple') {
+  //     drawRoundTripBarsSimple();
+  //   } else if (display === 'tenTripBarsSimple') {
+  //     drawTenTripBarsSimple();
+  //   };
 
-    $scope.resultsChart = display;
-  };
+  //   $scope.resultsChart = display;
+  // };
 
 
 
