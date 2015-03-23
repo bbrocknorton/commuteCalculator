@@ -11,31 +11,6 @@ $scope.returnHome = function() {
     $scope.resultsChart = "home";
   };
 
-  var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
-
-
-  var carGasSimple = function() {
-    $scope.carGasAnsSimple = $scope.dollarPerGallonOfGasSimple / $scope.mpgOfCarSimple;
-  };
-
-  var tireCalcSimple = function() {
-    $scope.tireSimple = $scope.costOfTiresSimple / $scope.milesTiresLastSimple;
-  };
-
-  var oilCalcSimple = function() {
-    $scope.oilSimple = $scope.costOfOilChangeSimple / $scope.milesOilChangeLastSimple;
-  };
-
-  var maintenanceCalcSimple = function() {
-    $scope.maintSimple = $scope.costOfMaintenanceSimple / $scope.milesMaintenanceLastSimple;
-  };
-
-  var insCalcSimple = function() {
-    var milesMonthSimple = $scope.milesToWorkSimple * 2 * 31;
-    $scope.insSimple = $scope.costOfInsuranceEachMonthSimple / milesMonthSimple;
-  };
-
-
   var minRoundSimple = function() {
     $scope.minsRoundSimple = $scope.minutesToWorkSimple * 2;
   };
@@ -64,25 +39,8 @@ $scope.returnHome = function() {
     $scope.irsRoundSimple = $scope.milesDrivenRoundSimple * .51;
   };
 
-  var actualRoundSimple = function() {
-    var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
-    $scope.actualRoundSimple = $scope.milesDrivenRoundSimple * actualSimple;
-  };
-
-  var avgRoundSimple = function() {
-    $scope.avgRoundSimple = ($scope.irsRoundSimple + $scope.actualRoundSimple) / 2;
-  };
-
   var wageIrsRoundSimple = function() {
     $scope.wageIrsRoundSimple = $scope.irsRoundSimple + $scope.hourlyWageRoundSimple;
-  };
-
-  var wageActualRoundSimple = function() {
-    $scope.wageActualRoundSimple = $scope.actualRoundSimple + $scope.hourlyWageRoundSimple;
-  };
-
-  var wageAverageRoundSimple = function() {
-    $scope.wageAverageRoundSimple = $scope.avgRoundSimple + $scope.hourlyWageRoundSimple;
   };
 
   var minsWeekSimple = function() {
@@ -113,25 +71,8 @@ $scope.returnHome = function() {
     $scope.irsWeekSimple = $scope.milesDrivenWeekSimple * .51;
   };
 
-  var actualWeekSimple = function() {
-    var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
-    $scope.actualWeekSimple = $scope.milesDrivenWeekSimple * actualSimple;
-  };
-
-  var avgWeekSimple = function() {
-    $scope.avgWeekSimple = ($scope.irsWeekSimple + $scope.actualWeekSimple) / 2;
-  };
-
   var wageIrsWeekSimple = function() {
     $scope.wageIrsWeekSimple = $scope.hourlyWageWeekSimple + $scope.irsWeekSimple;
-  };
-
-  var wageActualWeekSimple = function() {
-    $scope.wageActualWeekSimple = $scope.hourlyWageWeekSimple + $scope.actualWeekSimple;
-  };
-
-  var wageAverageWeekSimple = function() {
-    $scope.wageAverageWeekSimple = $scope.hourlyWageWeekSimple + $scope.avgWeekSimple;
   };
 
   var minsTenSimple = function() {
@@ -162,14 +103,7 @@ $scope.returnHome = function() {
     $scope.irsTenSimple = $scope.milesDrivenTenSimple * .51;
   };
 
-  var actualTenSimple = function() {
-    var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
-    $scope.actualTenSimple = $scope.milesDrivenTenSimple * actualSimple;
-  };
-
-  var avgTenSimple = function() {
-    $scope.avgTenSimple = ($scope.irsTenSimple + $scope.actualTenSimple) / 2;
-  };
+ 
 
   var wageIrsTenSimple = function() {
     $scope.wageIrsTenSimple = $scope.hourlyWageTenSimple + $scope.irsTenSimple;
@@ -178,62 +112,8 @@ $scope.returnHome = function() {
     }
   };
 
-  var wageActualTenSimple = function() {
-    $scope.wageActualTenSimple = $scope.hourlyWageTenSimple + $scope.actualTenSimple;
-    if ($scope.wageIrsTenSimple > 50000){
-    		$('.modal').modal('toggle');
-    }
-  };
-
-  var wageAverageTenSimple = function() {
-    $scope.wageAverageTenSimple = $scope.hourlyWageTenSimple + $scope.avgTenSimple;
-    if ($scope.wageIrsTenSimple > 50000){
-    		$('.modal').modal('toggle');
-    }
-  };
-
-  var drawPieChartSimple = function() {
-
-    var data = [$scope.carGasAnsSimple, $scope.tireSimple, $scope.oilSimple, $scope.maintSimple, $scope.insSimple];
-    var r = 200;
-
-    var color = d3.scale.ordinal()
-      .range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
-
-    var arc = d3.svg.arc()
-      .innerRadius(0)
-      .outerRadius(r);
-
-    var pie = d3.layout.pie()
-      .value(function(d) {
-        return d;
-      });
-
-    var arcs = $scope.chartSVGGroupSimple.selectAll(".arc")
-      .data(pie(data))
-      .enter()
-      .append("g")
-      .attr("class", "arc");
-
-    arcs.append("path")
-      .attr("d", arc)
-      .attr("fill", function(d) {
-        return color(d.data);
-      });
-
-    arcs.append("text")
-      .attr("transform", function(d) {
-        return "translate(" + arc.centroid(d) + ")";
-      })
-      .attr("text-anchor", "middle")
-      .attr("font-size", "1.5em")
-      .text(function(d) {
-        return d.data;
-      });
-  };
-
   var drawRoundTripBarsSimple = function() {
-    var dataArray = [$scope.wageIrsRoundSimple, $scope.wageAverageRoundSimple, $scope.wageActualRoundSimple];
+    var dataArray = [$scope.wageIrsRoundSimple];
 
     var width = 500;
     var height = 500;
@@ -247,7 +127,7 @@ $scope.returnHome = function() {
       .range(["yellow", "pink"]);
 
     var axis = d3.svg.axis()
-      .ticks(5)
+      .ticks(2)
       .scale(widthScale);
 
     var bars = $scope.chartSVGGroupSimple.selectAll("rect")
@@ -283,7 +163,7 @@ $scope.returnHome = function() {
   var drawWeekTripBarsSimple = function() {
 
 
-    var dataArray = [$scope.wageIrsWeekSimple, $scope.wageAverageWeekSimple, $scope.wageActualWeekSimple];
+    var dataArray = [$scope.wageIrsWeekSimple];
 
     var width = 500;
     var height = 500;
@@ -332,7 +212,7 @@ $scope.returnHome = function() {
 
   var drawTenTripBarsSimple = function() {
   		
-    var dataArray = [$scope.wageIrsTenSimple, $scope.wageAverageTenSimple, $scope.wageActualTenSimple];
+    var dataArray = [$scope.wageIrsTenSimple];
 
     var width = 500;
     var height = 500;
