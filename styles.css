@@ -19,10 +19,77 @@ html, body {
 
 .form {
 	width: 100%;
-	background-color: #B6B8B7;
 	border-radius: 5px;
 	clear: left;
 	text-align: center;
+}
+
+.form-group {
+	display: inline-block;
+	width: 50%;
+	font-size: 16px;
+}
+.page-right  .form-group {
+	display: inline-block;
+	width: 50%;
+	font-size: 16px;
+}
+
+.page-left  .form-group {
+	display: inline-block;
+	width: 35%;
+	font-size: 16px;
+}
+
+.form-control.detailed {
+	background: #97A8B2;
+	color: #FFFFFF;
+}
+.form-control.detailed::-webkit-input-placeholder {
+   color: #FFFFFF;
+}
+.form-control.detailed:-moz-placeholder { /* Firefox 18- */
+   color: #FFFFFF;
+}
+.form-control.detailed::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFFFFF;
+}
+.form-control.detailed:-ms-input-placeholder {
+   color: #FFFFFF;
+}
+
+
+.form-control.simple {
+	background: #FFFFFF;
+	color: #34495E;
+}
+.form-control.simple::-webkit-input-placeholder {
+   color: #34495E;
+}
+.form-control.simple:-moz-placeholder { /* Firefox 18- */
+   color: #34495E;
+}
+.form-control.simple::-moz-placeholder {  /* Firefox 19+ */
+   color: #34495E;
+}
+.form-control.simple:-ms-input-placeholder {
+   color: #34495E;
+}
+
+.btn:hover {
+	opacity: 0.8;
+}
+
+.btn-simple {
+	color: #34495E;
+	background-color: #FFFFFF;
+	border: 1px solid #34495E;
+}
+
+.btn-detailed {
+	background-color: #97A8B2;
+	color: #FFFFFF;
+	border: 1px solid #ECF0F1;
 }
 
 .button{
@@ -33,45 +100,29 @@ html, body {
 	color: blue;
 }
 
-.pieBack {
-	height: 500px;
-	width: 100%;
-	background-image: url("./images/road.jpg");
+
+.btn-group-wrap {
+    text-align: center;
+}
+
+.chartContainerDetailed svg, .chartContainerSimple svg {
+	margin: auto;
+	width: 400px;
+	display: block;
 }
 
 .pie {
-background-color: #AFC9E3;
-opacity: .6;
+	background-color: #AFC9E3;
+	opacity: .6;
 }
-
-.roundBack {
-	height: 500px;
-	width: 100%;
-	background-image: url("./images/surf.jpg");
-}
-
 .roundTripBars{
 	background-color: #AFC9E3;
 	opacity: .6;
 }
-
-.weekBack {
-	height: 500px;
-	width: 100%;
-	background-image: url("./images/volcano.jpg");
-}
-
 .weekTripBars{
 	background-color: #AFC9E3;
 	opacity: .6;
 }
-
-.tenBack {
-	height: 500px;
-	width: 100%;
-	background-image: url("./images/vw.jpg");
-}
-
 .tenTripBars{
 	background-color: #AFC9E3;
 	opacity: .6;
