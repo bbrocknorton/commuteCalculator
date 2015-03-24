@@ -87,10 +87,10 @@ app.controller("CommuteController", function($scope) {
 
     var containerSimple = d3.select(".chartContainerSimple");
     $scope.chartSVGSimple = containerSimple.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
+      .attr("width", 550)
+      .attr("height", 550);
     $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
-      .attr("transform", "translate(0, 50)");
+      .attr("transform", "translate(0, 10)");
   };
 
   initSimple();
@@ -237,10 +237,10 @@ $scope.returnHome = function() {
 
     var color = d3.scale.linear()
       .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range(["yellow", "pink"]);
+      .range(["white", "pink"]);
 
     var axis = d3.svg.axis()
-      .ticks(2)
+      .ticks(5)
       .scale(widthScale);
 
     var bars = $scope.chartSVGGroupSimple.selectAll("rect")
@@ -268,7 +268,7 @@ $scope.returnHome = function() {
       });
 
     $scope.chartSVGGroupSimple.append("g")
-      .attr("transform", "translate(0, 370)")
+      .attr("transform", "translate(0, 60)")
       .call(axis);
   };
 
@@ -317,7 +317,7 @@ $scope.returnHome = function() {
       });
 
     $scope.chartSVGGroupSimple.append("g")
-      .attr("transform", "translate(0, 370)")
+      .attr("transform", "translate(0, 60)")
       .call(axis);
   };
 
@@ -334,7 +334,7 @@ $scope.returnHome = function() {
 
     var color = d3.scale.linear()
       .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range(["red", "gray"]);
+      .range(["black", "gray"]);
 
     var axis = d3.svg.axis()
       .ticks(5)
@@ -365,7 +365,7 @@ $scope.returnHome = function() {
       });
 
     $scope.chartSVGGroupSimple.append("g")
-      .attr("transform", "translate(0, 370)")
+      .attr("transform", "translate(0, 60)")
       .call(axis);
   };
 
@@ -395,10 +395,10 @@ $scope.returnHome = function() {
 
     var containerDetailed = d3.select(".chartContainerDetailed");
     $scope.chartSVGDetailed = containerDetailed.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
+      .attr("width", 550)
+      .attr("height", 550);
     $scope.chartSVGGroupDetailed = $scope.chartSVGDetailed.append("g")
-      .attr("transform", "translate(200, 200)");
+      .attr("transform", "translate(0, 10)");
   };
 
   initDetailed();
@@ -700,7 +700,7 @@ $scope.returnHome = function() {
       });
 
     $scope.chartSVGGroupDetailed.append("g")
-      .attr("transform", "translate(0, 370)")
+      .attr("transform", "translate(0, 260)")
       .call(axis);
   };
 
@@ -749,7 +749,7 @@ $scope.returnHome = function() {
       });
 
     $scope.chartSVGGroupDetailed.append("g")
-      .attr("transform", "translate(0, 370)")
+      .attr("transform", "translate(0, 260)")
       .call(axis);
   };
 
@@ -797,7 +797,7 @@ $scope.returnHome = function() {
       });
 
     $scope.chartSVGGroupDetailed.append("g")
-      .attr("transform", "translate(0, 370)")
+      .attr("transform", "translate(0, 260)")
       .call(axis);
   };
 
