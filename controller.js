@@ -91,13 +91,6 @@ app.controller("CommuteController", function($scope) {
       .attr("height", 400);
     $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
       .attr("transform", "translate(20, 0)");
-
-    var containerSimple = d3.select(".chartContainerSimple");
-    $scope.chartSVGSimple = containerSimple.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
-    $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
-      .attr("transform", "translate(20, 0)");
   };
 
   initSimple();
@@ -271,7 +264,6 @@ $scope.returnHome = function() {
     bars
       .transition()
       .attr("width", function(d) {
-        // console.log(widthScale(d), widthScale.range());
         return widthScale(d);
       });
 
@@ -321,7 +313,6 @@ $scope.returnHome = function() {
     bars
       .transition(1500)
       .attr("width", function(d) {
-        // console.log(widthScale(d), widthScale.range());
         return widthScale(d);
       });
 
@@ -370,7 +361,6 @@ $scope.returnHome = function() {
     bars
       .transition()
       .attr("width", function(d) {
-        // console.log(widthScale(d), widthScale.range());
         return widthScale(d);
       });
 
@@ -408,14 +398,7 @@ $scope.returnHome = function() {
       .attr("width", 400)
       .attr("height", 400);
     $scope.chartSVGGroupDetailed = $scope.chartSVGDetailed.append("g")
-      .attr("transform", "translate(20, 0)");
-
-    var containerDetailed = d3.select(".chartContainerDetailed");
-    $scope.chartSVGDetailed = containerDetailed.append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
-    $scope.chartSVGGroupDetailed = $scope.chartSVGDetailed.append("g")
-      .attr("transform", "translate(20, 0)");
+      .attr("transform", "translate(200, 200)");
   };
 
   initDetailed();
@@ -548,7 +531,6 @@ $scope.returnHome = function() {
   var wageAverageRoundDetailed = function() {
   	$scope.wageAverageRoundDetailed = $scope.avgRoundDetailed + $scope.hourlyWageRoundDetailed;
   };
-
   var minsWeekDetailed = function() {
   	$scope.minsWeekDetailed = $scope.minsRoundDetailed * 5;
   };
@@ -586,7 +568,6 @@ $scope.returnHome = function() {
   var wageAverageWeekDetailed = function() {
   	$scope.wageAverageWeekDetailed = $scope.hourlyWageWeekDetailed + $scope.avgWeekDetailed;
   };
-
   var minsTenDetailed = function() {
   	$scope.minsTenDetailed = $scope.minsWeekDetailed * 520;
   };
@@ -638,8 +619,8 @@ $scope.returnHome = function() {
 
   var drawPieChartDetailed = function() {
 
-    var data = [$scope.carGasAnsDetailed, $scope.tireDetailed, $scope.oilDetailed, $scope.maintDetailed, $scope.insDetailed];
-    var r = 200;
+    var data = [$scope.carGasAnsDetailed , $scope.tireDetailed, $scope.oilDetailed, $scope.maintDetailed, $scope.insDetailed];
+    var r = 175;
 
     var color = d3.scale.ordinal()
       .range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
@@ -715,7 +696,6 @@ $scope.returnHome = function() {
     bars
       .transition()
       .attr("width", function(d) {
-        // console.log(widthScale(d), widthScale.range());
         return widthScale(d);
       });
 
@@ -765,7 +745,6 @@ $scope.returnHome = function() {
     bars
       .transition(1500)
       .attr("width", function(d) {
-        // console.log(widthScale(d), widthScale.range());
         return widthScale(d);
       });
 
@@ -814,7 +793,6 @@ $scope.returnHome = function() {
     bars
       .transition()
       .attr("width", function(d) {
-        // console.log(widthScale(d), widthScale.range());
         return widthScale(d);
       });
 
