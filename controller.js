@@ -90,7 +90,7 @@ app.controller("CommuteController", function($scope) {
       .attr("width", 400)
       .attr("height", 400);
     $scope.chartSVGGroupSimple = $scope.chartSVGSimple.append("g")
-      .attr("transform", "translate(20, 0)");
+      .attr("transform", "translate(0, 50)");
   };
 
   initSimple();
@@ -126,7 +126,7 @@ app.controller("CommuteController", function($scope) {
     wageIrsTenSimple();
 
     if ($scope.resultsChart !== display) {
-      d3.select('.chartContainer g')
+      d3.select('.chartContainerSimple g')
         .selectAll('*')
         .remove();
     }
@@ -452,7 +452,7 @@ $scope.returnHome = function() {
     wageAverageTenDetailed();
 
     if ($scope.resultsChart !== display) {
-      d3.select('.chartContainer g')
+      d3.select('.chartContainerDetailed g')
         .selectAll('*')
         .remove();
     }
@@ -619,7 +619,7 @@ $scope.returnHome = function() {
 
   var drawPieChartDetailed = function() {
 
-    var data = [$scope.carGasAnsDetailed , $scope.tireDetailed, $scope.oilDetailed, $scope.maintDetailed, $scope.insDetailed];
+    var data = [$scope.carGasAnsDetailed, $scope.tireDetailed, $scope.oilDetailed, $scope.maintDetailed, $scope.insDetailed];
     var r = 175;
 
     var color = d3.scale.ordinal()
