@@ -7,377 +7,98 @@
  change chartSVGGroup to chartSVGGroupSimple/simple
  -->
 
-$scope.returnHome = function() {
-    $scope.resultsChart = "home";
-  };
+<div class="indResults pie"></div>
+
+<div class="pieBack">
+	<div class="indResults pie"></div>
+</div>
+
+Cent/mile gas cost: ${{carGasAns | number : 3}}
+Cent/mile tire cost: ${{tire | number : 3}}
+Cent/mile oil change cost: ${{oil | number : 3}}
+Cent/mile maintenance cost: ${{maint | number : 3}}
+Cent/mile insurance cost: ${{ins | number : 3}}
+Cent/mile insurance cost: ${{ins | number : 3}}
+
+<div class="indResults roundTripBars"></div>
+
+		Round trip time in minutes: {{minsRound | number : 0}}
+			<hr>
+			Round trip time in hours: {{hoursRound | number : 1}}
+			<hr>
+			Round trip time in 8-hour work days: {{eightHourRound | number : 2}}
+			<hr>
+			Round trip time in 40-hour work weeks: {{fortyHourRound | number : 2}}
+			<hr>
+			Your hourly wage spent commuting round trip: ${{hourlyWageRound | number : 2}}
+			<hr>
+			Miles driven round trip: {{milesDrivenRound | number : 1}}
+			<hr>
+			Round trip cost using IRS cost estimate: ${{irsRound | number : 2}}
+			<hr>
+			Round trip cost using actual cost estimate: ${{actualRound | number : 2}}
+			<hr>
+			Round trip cost using average cost estimate: ${{avgRound | number : 2}}
+			<hr>
+			Round trip cost of wages forfeited and IRS cost estimate: ${{wageIrsRound | number : 2}}
+			<hr>
+			Round trip cost of wages forfeited and actual cost estimate: ${{wageActualRound | number : 2}}
+			<hr>
+			Round trip cost of wages forfeited and average cost estimate: ${{wageAverageRound | number : 2}}
+			<hr>
+
+			<div class="indResults weekTripBars"></div>
+
+Weekly time spent commuting in minutes: {{minsWeek | number : 0}}
+			<hr>
+			Weekly time spent commuting in hours: {{hoursWeek | number : 1}}
+			<hr>
+			Weekly time spent commuting in 8-hour work days: {{eightHourWeek | number : 2}}
+			<hr>
+			Weekly time spent commuting in 40-hour work weeks: {{fortyHourWeek | number : 2}}
+			<hr>
+			Your hourly wage spent commuting weekly: ${{hourlyWageWeek | number : 2}}
+			<hr>
+			Miles driven weekly: {{milesDrivenWeek | number : 1}}
+			<hr>
+			Weekly cost using IRS cost estimate: ${{irsWeek | number : 2}}
+			<hr>
+			Weekly cost using actual cost estimate: ${{actualWeek | number : 2}}
+			<hr>
+			Weekly cost using average cost estimate: ${{avgWeek | number : 2}}
+			<hr>
+			Weekly cost of wages forfeited and IRS cost estimate: ${{wageIrsWeek | number : 2}}
+			<hr>
+			Weekly cost of wages forfeited and actual cost estimate: ${{wageActualWeek | number : 2}}
+			<hr>
+			Weekly cost of wages forfeited and average cost estimate: ${{wageAverageWeek | number : 2}}
+			<hr>
+
+			<div class="indResults tenTripBars"></div>
+
+Every ten years time spent commuting in minutes: {{minsTen | number : 0}}
+			<hr>
+			Every ten years time spent commuting in hours: {{hoursTen | number : 1}}
+			<hr>
+			Every ten years time spent commuting in 8-hour work days: {{eightHourTen | number : 2}}
+			<hr>
+			Every ten years time spent commuting in 40-hour work weeks: {{fortyHourTen | number : 2}}
+			<hr>
+			Your hourly wage spent commuting every ten years: ${{hourlyWageTen | number : 2}}
+			<hr>
+			Miles driven Every ten years: {{milesDrivenTen | number : 1}}
+			<hr>
+			Every ten years cost using IRS cost estimate: ${{irsTen | number : 2}}
+			<hr>
+			Every ten years cost using actual cost estimate: ${{actualTen | number : 2}}
+			<hr>
+			Every ten years cost using average cost estimate: ${{avgTen | number : 2}}
+			<hr>
+			Every ten years cost of wages forfeited and IRS cost estimate: ${{wageIrsTen | number : 2}}
+			<hr>
+			Every ten years cost of wages forfeited and actual cost estimate: ${{wageActualTen | number : 2}}
+			<hr>
+			Every ten years cost of wages forfeited and average cost estimate: ${{wageAverageTen | number : 2}}
+			<hr>
 
-  var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
 
-
-  var carGasSimple = function() {
-    $scope.carGasAnsSimple = $scope.dollarPerGallonOfGasSimple / $scope.mpgOfCarSimple;
-  };
-
-  var tireCalcSimple = function() {
-    $scope.tireSimple = $scope.costOfTiresSimple / $scope.milesTiresLastSimple;
-  };
-
-  var oilCalcSimple = function() {
-    $scope.oilSimple = $scope.costOfOilChangeSimple / $scope.milesOilChangeLastSimple;
-  };
-
-  var maintenanceCalcSimple = function() {
-    $scope.maintSimple = $scope.costOfMaintenanceSimple / $scope.milesMaintenanceLastSimple;
-  };
-
-  var insCalcSimple = function() {
-    var milesMonthSimple = $scope.milesToWorkSimple * 2 * 31;
-    $scope.insSimple = $scope.costOfInsuranceEachMonthSimple / milesMonthSimple;
-  };
-
-
-  var minRoundSimple = function() {
-    $scope.minsRoundSimple = $scope.minutesToWorkSimple * 2;
-  };
-
-  var hourRoundSimple = function() {
-    $scope.hoursRoundSimple = $scope.minsRoundSimple / 60;
-  };
-
-  var eightHourRoundSimple = function() {
-    $scope.eightHourRoundSimple = $scope.hoursRoundSimple / 8;
-  };
-
-  var fortyHourRoundSimple = function() {
-    $scope.fortyHourRoundSimple = $scope.eightHourRoundSimple / 40;
-  };
-
-  var hourlyWageRoundSimple = function() {
-    $scope.hourlyWageRoundSimple = $scope.avgHourlyWageSimple * $scope.hoursRoundSimple;
-  };
-
-  var milesRoundSimple = function() {
-    $scope.milesDrivenRoundSimple = $scope.milesToWorkSimple * 2;
-  };
-
-  var irsRoundSimple = function() {
-    $scope.irsRoundSimple = $scope.milesDrivenRoundSimple * .51;
-  };
-
-  var actualRoundSimple = function() {
-    var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
-    $scope.actualRoundSimple = $scope.milesDrivenRoundSimple * actualSimple;
-  };
-
-  var avgRoundSimple = function() {
-    $scope.avgRoundSimple = ($scope.irsRoundSimple + $scope.actualRoundSimple) / 2;
-  };
-
-  var wageIrsRoundSimple = function() {
-    $scope.wageIrsRoundSimple = $scope.irsRoundSimple + $scope.hourlyWageRoundSimple;
-  };
-
-  var wageActualRoundSimple = function() {
-    $scope.wageActualRoundSimple = $scope.actualRoundSimple + $scope.hourlyWageRoundSimple;
-  };
-
-  var wageAverageRoundSimple = function() {
-    $scope.wageAverageRoundSimple = $scope.avgRoundSimple + $scope.hourlyWageRoundSimple;
-  };
-
-  var minsWeekSimple = function() {
-    $scope.minsWeekSimple = $scope.minsRoundSimple * 5;
-  };
-
-  var hoursWeekSimple = function() {
-    $scope.hoursWeekSimple = $scope.hoursRoundSimple * 5;
-  };
-
-  var eightHourWeekSimple = function() {
-    $scope.eightHourWeekSimple = $scope.eightHourRoundSimple * 5;
-  };
-
-  var fortyHourWeekSimple = function() {
-    $scope.fortyHourWeekSimple = $scope.fortyHourRoundSimple * 5;
-  };
-
-  var hourlyWageWeekSimple = function() {
-    $scope.hourlyWageWeekSimple = $scope.hourlyWageRoundSimple * 5;
-  };
-
-  var milesDrivenWeekSimple = function() {
-    $scope.milesDrivenWeekSimple = $scope.milesDrivenRoundSimple * 5;
-  };
-
-  var irsWeekSimple = function() {
-    $scope.irsWeekSimple = $scope.milesDrivenWeekSimple * .51;
-  };
-
-  var actualWeekSimple = function() {
-    var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
-    $scope.actualWeekSimple = $scope.milesDrivenWeekSimple * actualSimple;
-  };
-
-  var avgWeekSimple = function() {
-    $scope.avgWeekSimple = ($scope.irsWeekSimple + $scope.actualWeekSimple) / 2;
-  };
-
-  var wageIrsWeekSimple = function() {
-    $scope.wageIrsWeekSimple = $scope.hourlyWageWeekSimple + $scope.irsWeekSimple;
-  };
-
-  var wageActualWeekSimple = function() {
-    $scope.wageActualWeekSimple = $scope.hourlyWageWeekSimple + $scope.actualWeekSimple;
-  };
-
-  var wageAverageWeekSimple = function() {
-    $scope.wageAverageWeekSimple = $scope.hourlyWageWeekSimple + $scope.avgWeekSimple;
-  };
-
-  var minsTenSimple = function() {
-    $scope.minsTenSimple = $scope.minsWeekSimple * 520;
-  };
-
-  var hoursTenSimple = function() {
-    $scope.hoursTenSimple = $scope.hoursWeekSimple * 520;
-  };
-
-  var eightHourTenSimple = function() {
-    $scope.eightHourTenSimple = $scope.eightHourWeekSimple * 520;
-  };
-
-  var fortyHourTenSimple = function() {
-    $scope.fortyHourTenSimple = $scope.fortyHourWeekSimple * 520;
-  };
-
-  var hourlyWageTenSimple = function() {
-    $scope.hourlyWageTenSimple = $scope.hourlyWageWeekSimple * 520;
-  };
-
-  var milesDrivenTenSimple = function() {
-    $scope.milesDrivenTenSimple = $scope.milesDrivenWeekSimple * 520;
-  };
-
-  var irsTenSimple = function() {
-    $scope.irsTenSimple = $scope.milesDrivenTenSimple * .51;
-  };
-
-  var actualTenSimple = function() {
-    var actualSimple = $scope.carGasAnsSimple + $scope.tireSimple + $scope.oilSimple + $scope.maintSimple + $scope.insSimple;
-    $scope.actualTenSimple = $scope.milesDrivenTenSimple * actualSimple;
-  };
-
-  var avgTenSimple = function() {
-    $scope.avgTenSimple = ($scope.irsTenSimple + $scope.actualTenSimple) / 2;
-  };
-
-  var wageIrsTenSimple = function() {
-    $scope.wageIrsTenSimple = $scope.hourlyWageTenSimple + $scope.irsTenSimple;
-    if ($scope.wageIrsTenSimple > 50000) {
-      $('.modal').modal('toggle');
-    }
-  };
-
-  var wageActualTenSimple = function() {
-    $scope.wageActualTenSimple = $scope.hourlyWageTenSimple + $scope.actualTenSimple;
-    if ($scope.wageIrsTenSimple > 50000){
-    		$('.modal').modal('toggle');
-    }
-  };
-
-  var wageAverageTenSimple = function() {
-    $scope.wageAverageTenSimple = $scope.hourlyWageTenSimple + $scope.avgTenSimple;
-    if ($scope.wageIrsTenSimple > 50000){
-    		$('.modal').modal('toggle');
-    }
-  };
-
-  var drawPieChartSimple = function() {
-
-    var data = [$scope.carGasAnsSimple, $scope.tireSimple, $scope.oilSimple, $scope.maintSimple, $scope.insSimple];
-    var r = 200;
-
-    var color = d3.scale.ordinal()
-      .range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
-
-    var arc = d3.svg.arc()
-      .innerRadius(0)
-      .outerRadius(r);
-
-    var pie = d3.layout.pie()
-      .value(function(d) {
-        return d;
-      });
-
-    var arcs = $scope.chartSVGGroupSimple.selectAll(".arc")
-      .data(pie(data))
-      .enter()
-      .append("g")
-      .attr("class", "arc");
-
-    arcs.append("path")
-      .attr("d", arc)
-      .attr("fill", function(d) {
-        return color(d.data);
-      });
-
-    arcs.append("text")
-      .attr("transform", function(d) {
-        return "translate(" + arc.centroid(d) + ")";
-      })
-      .attr("text-anchor", "middle")
-      .attr("font-size", "1.5em")
-      .text(function(d) {
-        return d.data;
-      });
-  };
-
-  var drawRoundTripBarsSimple = function() {
-    var dataArray = [$scope.wageIrsRoundSimple, $scope.wageAverageRoundSimple, $scope.wageActualRoundSimple];
-
-    var width = 500;
-    var height = 500;
-
-    var widthScale = d3.scale.linear()
-      .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range([0, width]);
-
-    var color = d3.scale.linear()
-      .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range(["yellow", "pink"]);
-
-    var axis = d3.svg.axis()
-      .ticks(5)
-      .scale(widthScale);
-
-    var bars = $scope.chartSVGGroupSimple.selectAll("rect")
-      .data(dataArray);
-
-    bars.exit().remove();
-
-    bars.enter()
-      .append("rect")
-      .attr({
-        'width': 0,
-        'height': 50,
-        'fill': function(d) {
-          return color(d);
-        },
-        'y': function(d, i) {
-          return i * 100;
-        }
-      });
-
-    bars
-      .transition()
-      .attr("width", function(d) {
-        console.log(widthScale(d), widthScale.range());
-        return widthScale(d);
-      });
-
-    $scope.chartSVGGroupSimple.append("g")
-      .attr("transform", "translate(0, 370)")
-      .call(axis);
-  };
-
-  var drawWeekTripBarsSimple = function() {
-
-
-    var dataArray = [$scope.wageIrsWeekSimple, $scope.wageAverageWeekSimple, $scope.wageActualWeekSimple];
-
-    var width = 500;
-    var height = 500;
-
-    var widthScale = d3.scale.linear()
-      .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range([0, width]);
-
-    var color = d3.scale.linear()
-      .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range(["red", "black"]);
-
-    var axis = d3.svg.axis()
-      .ticks(5)
-      .scale(widthScale);
-
-    var bars = $scope.chartSVGGroupSimple.selectAll("rect")
-      .data(dataArray);
-
-    bars.exit().remove();
-
-    bars.enter()
-      .append("rect")
-      .attr({
-        'width': 0,
-        'height': 50,
-        'fill': function(d) {
-          return color(d);
-        },
-        'y': function(d, i) {
-          return i * 100;
-        }
-      });
-
-    bars
-      .transition(1500)
-      .attr("width", function(d) {
-        console.log(widthScale(d), widthScale.range());
-        return widthScale(d);
-      });
-
-    $scope.chartSVGGroupSimple.append("g")
-      .attr("transform", "translate(0, 370)")
-      .call(axis);
-  };
-
-  var drawTenTripBarsSimple = function() {
-  		
-    var dataArray = [$scope.wageIrsTenSimple, $scope.wageAverageTenSimple, $scope.wageActualTenSimple];
-
-    var width = 500;
-    var height = 500;
-
-    var widthScale = d3.scale.linear()
-      .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range([0, width]);
-
-    var color = d3.scale.linear()
-      .domain([d3.min(dataArray) * 0.9, d3.max(dataArray) * 1.1])
-      .range(["red", "gray"]);
-
-    var axis = d3.svg.axis()
-      .ticks(5)
-      .scale(widthScale);
-
-    var bars = $scope.chartSVGGroupSimple.selectAll("rect")
-      .data(dataArray);
-
-    bars.exit().remove();
-
-    bars.enter()
-      .append("rect")
-      .attr({
-        'width': 0,
-        'height': 50,
-        'fill': function(d) {
-          return color(d);
-        },
-        'y': function(d, i) {
-          return i * 100;
-        }
-      });
-
-    bars
-      .transition()
-      .attr("width", function(d) {
-        console.log(widthScale(d), widthScale.range());
-        return widthScale(d);
-      });
-
-    $scope.chartSVGGroupSimple.append("g")
-      .attr("transform", "translate(0, 370)")
-      .call(axis);
-  };
-
-
-});
