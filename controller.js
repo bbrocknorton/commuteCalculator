@@ -395,8 +395,8 @@ $scope.returnHome = function() {
 
     var containerDetailed = d3.select(".chartContainerDetailed");
     $scope.chartSVGDetailed = containerDetailed.append("svg")
-      .attr("width", 550)
-      .attr("height", 550);
+      .attr("width", 500)
+      .attr("height", 500);
     $scope.chartSVGGroupDetailed = $scope.chartSVGDetailed.append("g")
       .attr("transform", "translate(0, 10)");
   };
@@ -620,7 +620,7 @@ $scope.returnHome = function() {
   var drawPieChartDetailed = function() {
 
     var data = [$scope.carGasAnsDetailed, $scope.tireDetailed, $scope.oilDetailed, $scope.maintDetailed, $scope.insDetailed];
-    var r = 175;
+    var r = 200;
 
     var color = d3.scale.ordinal()
       .range(["#6AFCFB", "#FE792C", "#FE1B10", "#C6EE2B", "#FF6BCC"]);
@@ -655,6 +655,7 @@ $scope.returnHome = function() {
       .text(function(d) {
         return d.data;
       });
+
   };
 
   var drawRoundTripBarsDetailed = function() {
