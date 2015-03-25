@@ -175,7 +175,7 @@ body {
 
 .open-left .side,
 .open-right .side {
-	cursor: default;
+	cursor: auto;
 }
 
 .overlay {
@@ -218,7 +218,7 @@ body {
 	left: 50%;
 	padding: 0 1em;
 	width: 50%;
-	cursor: pointer;
+	cursor: auto;
 	-webkit-transform: translateY(-50%) translateX(-50%);
 	transform: translateY(-50%) translateX(-50%);
 }
@@ -270,7 +270,7 @@ body {
 }
 
 .back {
-	cursor: pointer;
+	cursor: auto;
 	position: fixed;
 	top: 2.6em;
 	z-index: 500;
